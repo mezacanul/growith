@@ -179,7 +179,7 @@
       return (
         <>
           {/* Version mobil */}
-          <section className="flex items-start gap-[1rem] md:hidden w-full">
+          <Section className="flex items-start gap-[1rem] md:hidden">
             <div className="w-[65%] flex flex-col gap-2">
               <h3 className="text-lg font-bold">{data.titulo}</h3>
 
@@ -208,100 +208,175 @@
               </div>
             </div>
 
-            <button
-              className="w-[35%] bgc-primary tc-white rounded rounded-md py-1 px-3 text-center"
-              type="button"
+            <Button
+              variant="primary"
+              className="w-[35%]"
+              asLink={true}
+              href={data.url}
             >
-              <a target="_blank" href={data.url}>
-                {data.textoBtn}
-              </a>
-            </button>
-          </section>
+              {data.textoBtn}
+            </Button>
+          </Section>
 
           {/* Version de escritorio */}
-          <section className="hidden h-[20rem] md:flex gap-[2rem] w-full items-center justify-between">
-            <p className="w-[20%] font-medium tc-primary text-2xl">
+          <Section className="hidden h-[20rem] md:flex gap-[2rem] items-center justify-between">
+            <Text variant="h3" className="w-[20%] font-medium tc-primary">
               {data.textoIzq}
-            </p>
+            </Text>
 
             <div className="w-[60%] flex justify-center items-center text-center">
               <div className="flex flex-col gap-3 w-[75%] h-full">
-                <h3 className="text-3xl font-bold">{data.titulo}</h3>
-                <p>{data.descripcion}</p>
+                <Text variant="h2" className="font-bold">
+                  {data.titulo}
+                </Text>
+                <Text variant="p">{data.descripcion}</Text>
                 <div className="w-[100%] flex justify-between font-bold">
                   <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined">
-                      {" "}
-                      event_available{" "}
-                    </span>
-                    <span> {data.fecha} </span>
+                    <Text
+                      variant="p"
+                      inline
+                      className="material-symbols-outlined"
+                    >
+                      {"event_available"}
+                    </Text>
+                    <Text variant="p" inline>
+                      {data.fecha}
+                    </Text>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined">
-                      {" "}
-                      schedule{" "}
-                    </span>
-                    <span>{data.hora}</span>
+                    <Text
+                      variant="p"
+                      inline
+                      className="material-symbols-outlined"
+                    >
+                      {"schedule"}
+                    </Text>
+                    <Text variant="p" inline>
+                      {data.hora}
+                    </Text>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="w-[20%] flex justify-end">
-              <button
-                className="bgc-primary tc-white rounded rounded-md py-1 px-3 text-center"
-                type="button"
+              <Button
+                variant="primary"
+                asLink={true}
+                href={data.url}
               >
-                <a target="_blank" href={data.url}>
-                  {data.textoBtn}
-                </a>
-              </button>
+                {data.textoBtn}
+              </Button>
             </div>
-          </section>
+          </Section>
         </>
       );
     }
 
     function EspacioDeTrabajo() {
       return (
-        <section className="w-full bgc-stone flex justify-around items-center">
+        <Section parentClass={"bgc-stone"} className="flex justify-between items-center">
           <div>
-            <h3>{"Este es tu espacio de trabajo"}</h3>
+            <Text variant="h3">{"Este es tu espacio de trabajo"}</Text>
             <Skeleton title="Logo" h="10rem" />
-            <button>{"Sube aqui tus implementaciones"}</button>
+            <Button variant="primary">{"Sube aqui tus implementaciones"}</Button>
           </div>
 
           <div>
-            <h4>{"CALENDARIO BUSINESS ACADEMY"}</h4>
-            <h4>{"MARZO 2026"}</h4>
+            <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
+            <Text variant="h4">{"MARZO 2026"}</Text>
             <Skeleton title="Calendario" h="30rem" />
-            <button>{"Ver calendario"}</button>
+            <Button variant="primary">{"Ver calendario"}</Button>
           </div>
-        </section>
+        </Section>
       );
     }
 
     function ImplementacionesDestacadas() {
       return (
-        <section className="w-full grid grid-cols-3 justify-around items-center">
-          <h3>{"Encuentra aqui tus implementaciones mas destacadas"}</h3>
+        <Section className="grid grid-cols-3 justify-around items-center">
+          <Text variant="h3">
+            {"Encuentra aqui tus implementaciones mas destacadas"}
+          </Text>
           <div className="col-span-2">
             <Skeleton title="Implementacion 1" h="20rem" />
           </div>
-        </section>
+        </Section>
       );
     }
 
     function Reuniones({ assets }) {
       return (
-        <section
-          className="w-full text-white flex flex-col justify-around items-center"
+        <Section
+          className="text-white flex flex-col justify-around items-center"
           style={{ backgroundImage: `url(${assets.heroBg})` }}
         >
-          <p>{"Mantente al tanto de nuestras reuniones"}</p>
-          <h3>{"Todos los Jueves a las 10:00 AM"}</h3>
-          <button>{"LLAMADA SEMANAL"}</button>
+          <Text variant="p">{"Mantente al tanto de nuestras reuniones"}</Text>
+          <Text variant="h3">{"Todos los Jueves a las 10:00 AM"}</Text>
+          <Button variant="light">{"LLAMADA SEMANAL"}</Button>
+        </Section>
+      );
+    }
+
+    function Text({ variant = "p", children, className, inline = false }) {
+      const fontSizeMap = {
+        p: "text-base",
+        h1: "text-4xl",
+        h2: "text-3xl",
+        h3: "text-2xl",
+        h4: "text-xl",
+        h5: "text-lg",
+        h6: "text-base",
+        sm: "text-sm",
+        xs: "text-xs",
+      };
+      const props = {
+        className: cn(fontSizeMap[variant], className),
+      };
+      return inline === true ? (
+        <span {...props}>{children}</span>
+      ) : (
+        <p {...props}>{children}</p>
+      );
+    }
+
+    function Button({
+      variant = "primary",
+      children,
+      className,
+      asLink = false,
+      href = "",
+      target = "_blank",
+    }) {
+      const variantMap = {
+        primary: "bgc-primary tc-white",
+        light: "bgc-white tc-primary",
+        dark: "bgc-night tc-white",
+      };
+      const props = {
+        className: cn(
+          variantMap[variant],
+          "rounded-sm py-1 px-3 text-center",
+          className,
+        ),
+      };
+      if (asLink === true) {
+        return (
+          <a target={target} href={href} {...props}>
+            {children}
+          </a>
+        );
+      }
+      return <button {...props}>{children}</button>;
+    }
+
+    function Section({ children, className, parentClass, ...props }) {
+      return (
+        <section className={cn("w-full", parentClass)} {...props}>
+          <div className={cn("w-[80%] mx-auto", className)}>
+            {children}
+          </div>
         </section>
       );
     }
@@ -314,7 +389,7 @@
           )}
           style={{ width: w, height: h }}
         >
-          <h3 className="text-lg font-bold">{title}</h3>
+          <Text variant="h3" className="opacity-50 font-medium">{title}</Text>
         </div>
       );
     }
