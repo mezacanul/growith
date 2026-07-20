@@ -1,4 +1,5 @@
 <head>
+  <title>Growith | Academia</title>
   <script>
     /* @name window.GOOGLE_DATA */
     /* @type {Object} */
@@ -62,7 +63,7 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
   />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- React -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -90,6 +91,9 @@
       font-family: var(--font-sans) !important;
       color: var(--text-night);
       background-color: var(--text-off-white);
+    }
+    body {
+      overflow-x: hidden;
     }
     .text-white {
       color: var(--text-off-white);
@@ -148,7 +152,7 @@
     // Componente principal
     function App({ data }) {
       return (
-        <div>
+        <div className="w-[100vw]">
           {/* Menu de navegacion */}
           <Header assets={data.assets} />
 
@@ -164,16 +168,18 @@
 
     function Header({ assets }) {
       return (
-        <header className={cn("fixed top-0 left-0 w-full py-6")}>
+        <header className={cn("fixed top-0 left-0 w-full py-7 lg:py-6")}>
           <div className="flex w-[90%] mx-auto justify-between items-center text-white">
             <img
               className="h-5 object-contain"
               src={assets.growithLogo}
               alt="Growith Logo"
             />
-            <div className="flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-4">
               {paginas.map((pagina) => (
-                <a  key={pagina.title} href={pagina.route}>{pagina.title}</a>
+                <a key={pagina.title} href={pagina.route}>
+                  {pagina.title}
+                </a>
               ))}
             </div>
           </div>
@@ -187,21 +193,21 @@
           className={cn(
             "text-white text-center flex flex-col items-center justify-center",
             `bg-cover bg-center h-[30rem]`,
-            "gap-4"
+            "gap-4 lg:gap-4",
           )}
           style={{ backgroundImage: `url(${assets.heroBg})` }}
         >
-          <Text variant="h3" className="font-light">
+          <Text variant="h5" className="font-light">
             {"Bienvenido a"}
           </Text>
           <img
             src={assets.businessAcademyLogo}
             alt="Business Academy Logo"
-            className="h-15 object-contain"
+            className="h-auto lg:h-18 object-contain"
           />
           <Text
-            variant="h5"
-            className="border-b-2 pb-2"
+            // variant="h4"
+            className="text-lg lg:text-xl lg:border-b-2 lg:pb-2 w-75 lg:w-auto"
             style={{ borderColor: "var(--text-off-white)" }}
           >
             {"El crecimiento que estas buscando, esta en tus manos..."}
@@ -209,7 +215,7 @@
           <img
             src={assets.letsGrowith}
             alt="Lets Growith"
-            className="h-10 object-contain"
+            className="h-auto w-[85%] lg:h-10 lg:w-auto object-contain"
           />
         </Section>
       );
@@ -219,11 +225,17 @@
       return (
         <>
           {/* Version mobil */}
-          <Section className={cn("flex items-start gap-[1rem] md:hidden")}>
-            <div className="w-[65%] h-full flex flex-col gap-2">
-              <h3 className="text-lg font-bold">{data.titulo}</h3>
+          <Section
+            className={cn(
+              "flex py-10 flex-col items-start gap-[1rem] lg:hidden",
+            )}
+          >
+            <div className="w-[100%] h-full flex flex-col gap-2">
+              <Text variant="h3" className="font-bold">
+                {data.titulo}
+              </Text>
 
-              <div className="w-[100%] flex justify-between font-bold">
+              <div className="w-[100%] flex flex-col gap-3 justify-between font-bold">
                 <div className="flex items-center gap-1">
                   <span
                     className="material-symbols-outlined"
@@ -246,11 +258,13 @@
                   <span className="text-sm">{data.hora}</span>
                 </div>
               </div>
+
+              <Text variant="p">{data.descripcion}</Text>
             </div>
 
             <Button
               variant="primary"
-              className="w-[35%]"
+              className="w-[50%]"
               asLink={true}
               href={data.url}
             >
@@ -259,7 +273,7 @@
           </Section>
 
           {/* Version de escritorio */}
-          <Section className="hidden h-[25rem] md:flex gap-[2rem] items-center justify-between">
+          <Section className="hidden h-[25rem] lg:flex gap-[2rem] items-center justify-between">
             <Text variant="h2" className="w-[25%] tc-primary">
               {data.textoIzq}
             </Text>
@@ -314,20 +328,30 @@
       return (
         <Section
           parentClass={"bgc-stone"}
-          className="grid grid-cols-5 justify-between items-center py-[6rem]"
+          className={cn(
+            "flex flex-col lg:grid grid-cols-5 justify-between items-center py-[6rem]",
+            "gap-15 lg:gap-0",
+          )}
         >
           <div className="col-span-3 flex flex-col items-start gap-[1.5rem]">
-            <Text variant="h3">{"Este es tu espacio de trabajo"}</Text>
-            <Skeleton title="Logo" h="10rem" w="30rem"/>
+            <Text variant="h3" className="text-center lg:text-left">
+              {"Este es tu espacio de trabajo"}
+            </Text>
+            <div className="w-full lg:w-[30rem] h-[10rem]">
+              <Skeleton title="Logo" />
+            </div>
+
             <Button variant="primary">
               {"Sube aqui tus implementaciones"}
             </Button>
           </div>
 
           <div className="col-span-2 flex flex-col items-center justify-center gap-[1.5rem]">
-            <div className="flex flex-col items-center justify-center gap-1">
-            <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
-            <Text variant="h4">{"MARZO 2026"}</Text>
+            <div className="text-center flex flex-col items-center justify-center gap-1">
+              <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
+              <Text variant="h4" className={"font-bold tc-primary"}>
+                {"MARZO 2026"}
+              </Text>
             </div>
             <Skeleton title="Calendario" h="26rem" />
             <Button variant="primary">{"Ver calendario"}</Button>
@@ -338,11 +362,18 @@
 
     function ImplementacionesDestacadas() {
       return (
-        <Section className="grid h-[35rem] grid-cols-5 justify-around items-center gap-5">
+        <Section
+          className={cn(
+            "flex flex-col lg:grid h-auto lg:h-[35rem] grid-cols-5 justify-around items-center gap-5",
+            "gap-15 lg:gap-0",
+            "text-center lg:text-left",
+            "py-15 lg:py-0",
+          )}
+        >
           <Text variant="h2" className="col-span-2">
             {"Encuentra aqui tus implementaciones mas destacadas"}
           </Text>
-          <div className="col-span-3">
+          <div className="col-span-3 w-full lg:w-auto">
             <Skeleton title="Implementacion 1" h="20rem" />
           </div>
         </Section>
@@ -355,8 +386,12 @@
           className="h-[20rem] text-white flex flex-col justify-center items-center gap-3"
           style={{ backgroundImage: `url(${assets.heroBg})` }}
         >
-          <Text variant="h4">{"Mantente al tanto de nuestras reuniones"}</Text>
-          <Text variant="h1" className="font-semibold italic mb-4">{"Todos los Jueves a las 10:00 AM"}</Text>
+          <Text variant="h4" className={"text-center"}>
+            {"Mantente al tanto de nuestras reuniones"}
+          </Text>
+          <Text variant="h1" className="text-center font-bold italic mb-4">
+            {"Todos los Jueves a las 10:00 AM"}
+          </Text>
           <Button variant="light">{"LLAMADA SEMANAL"}</Button>
         </Section>
       );
@@ -429,8 +464,13 @@
 
     function Section({ children, className, parentClass, ...props }) {
       return (
-        <section className={cn("w-full", parentClass)} {...props}>
-          <div className={cn("w-[80%] mx-auto", className)}>{children}</div>
+        <section
+          className={cn("w-full flex justify-center", parentClass)}
+          {...props}
+        >
+          <div className={cn("w-[85%] lg:w-[80%] lg:mx-auto", className)}>
+            {children}
+          </div>
         </section>
       );
     }
