@@ -43,6 +43,11 @@
       },
     };
 
+    const paginas = [
+      { title: "Inicio", route: "/" },
+      { title: "Material de Trabajo", route: "material-de-trabajo" },
+    ];
+
     function cn(...classes) {
       return classes.filter(Boolean).join(" ");
     }
@@ -57,6 +62,7 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
   />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- React -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -143,6 +149,10 @@
     function App({ data }) {
       return (
         <div>
+          {/* Menu de navegacion */}
+          <Header assets={data.assets} />
+
+          {/* Contenido principal de la pagina */}
           <Hero assets={data.assets} />
           <Evento data={data.evento} />
           <EspacioDeTrabajo />
@@ -152,28 +162,56 @@
       );
     }
 
+    function Header({ assets }) {
+      return (
+        <header className={cn("fixed top-0 left-0 w-full py-6")}>
+          <div className="flex w-[90%] mx-auto justify-between items-center text-white">
+            <img
+              className="h-5 object-contain"
+              src={assets.growithLogo}
+              alt="Growith Logo"
+            />
+            <div className="flex items-center gap-4">
+              {paginas.map((pagina) => (
+                <a  key={pagina.title} href={pagina.route}>{pagina.title}</a>
+              ))}
+            </div>
+          </div>
+        </header>
+      );
+    }
+
     function Hero({ assets }) {
       return (
-        <div
+        <Section
           className={cn(
-            "h-[20rem] text-white text-center flex flex-col items-center justify-center",
-            `bg-cover bg-center`,
+            "text-white text-center flex flex-col items-center justify-center",
+            `bg-cover bg-center h-[30rem]`,
+            "gap-4"
           )}
           style={{ backgroundImage: `url(${assets.heroBg})` }}
         >
-          <p>{"Bienvenido a"}</p>
+          <Text variant="h3" className="font-light">
+            {"Bienvenido a"}
+          </Text>
           <img
             src={assets.businessAcademyLogo}
             alt="Business Academy Logo"
-            className="h-10 object-contain"
+            className="h-15 object-contain"
           />
-          <p>{"El crecimiento que estas buscando, esta en tus manos..."}</p>
+          <Text
+            variant="h5"
+            className="border-b-2 pb-2"
+            style={{ borderColor: "var(--text-off-white)" }}
+          >
+            {"El crecimiento que estas buscando, esta en tus manos..."}
+          </Text>
           <img
             src={assets.letsGrowith}
             alt="Lets Growith"
             className="h-10 object-contain"
           />
-        </div>
+        </Section>
       );
     }
 
@@ -181,8 +219,8 @@
       return (
         <>
           {/* Version mobil */}
-          <Section className="flex items-start gap-[1rem] md:hidden">
-            <div className="w-[65%] flex flex-col gap-2">
+          <Section className={cn("flex items-start gap-[1rem] md:hidden")}>
+            <div className="w-[65%] h-full flex flex-col gap-2">
               <h3 className="text-lg font-bold">{data.titulo}</h3>
 
               <div className="w-[100%] flex justify-between font-bold">
@@ -221,12 +259,12 @@
           </Section>
 
           {/* Version de escritorio */}
-          <Section className="hidden h-[20rem] md:flex gap-[2rem] items-center justify-between">
-            <Text variant="h3" className="w-[20%] font-medium tc-primary">
+          <Section className="hidden h-[25rem] md:flex gap-[2rem] items-center justify-between">
+            <Text variant="h2" className="w-[25%] tc-primary">
               {data.textoIzq}
             </Text>
 
-            <div className="w-[60%] flex justify-center items-center text-center">
+            <div className="w-[50%] flex justify-center items-center text-center">
               <div className="flex flex-col gap-3 w-[75%] h-full">
                 <Text variant="h2" className="font-bold">
                   {data.titulo}
@@ -262,7 +300,7 @@
               </div>
             </div>
 
-            <div className="w-[20%] flex justify-end">
+            <div className="w-[25%] flex justify-end">
               <Button variant="primary" asLink={true} href={data.url}>
                 {data.textoBtn}
               </Button>
@@ -276,20 +314,22 @@
       return (
         <Section
           parentClass={"bgc-stone"}
-          className="flex justify-between items-center"
+          className="grid grid-cols-5 justify-between items-center py-[6rem]"
         >
-          <div>
+          <div className="col-span-3 flex flex-col items-start gap-[1.5rem]">
             <Text variant="h3">{"Este es tu espacio de trabajo"}</Text>
-            <Skeleton title="Logo" h="10rem" />
+            <Skeleton title="Logo" h="10rem" w="30rem"/>
             <Button variant="primary">
               {"Sube aqui tus implementaciones"}
             </Button>
           </div>
 
-          <div>
+          <div className="col-span-2 flex flex-col items-center justify-center gap-[1.5rem]">
+            <div className="flex flex-col items-center justify-center gap-1">
             <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
             <Text variant="h4">{"MARZO 2026"}</Text>
-            <Skeleton title="Calendario" h="30rem" />
+            </div>
+            <Skeleton title="Calendario" h="26rem" />
             <Button variant="primary">{"Ver calendario"}</Button>
           </div>
         </Section>
@@ -298,11 +338,11 @@
 
     function ImplementacionesDestacadas() {
       return (
-        <Section className="grid grid-cols-3 justify-around items-center">
-          <Text variant="h3">
+        <Section className="grid h-[35rem] grid-cols-5 justify-around items-center gap-5">
+          <Text variant="h2" className="col-span-2">
             {"Encuentra aqui tus implementaciones mas destacadas"}
           </Text>
-          <div className="col-span-2">
+          <div className="col-span-3">
             <Skeleton title="Implementacion 1" h="20rem" />
           </div>
         </Section>
@@ -312,17 +352,23 @@
     function Reuniones({ assets }) {
       return (
         <Section
-          className="text-white flex flex-col justify-around items-center"
+          className="h-[20rem] text-white flex flex-col justify-center items-center gap-3"
           style={{ backgroundImage: `url(${assets.heroBg})` }}
         >
-          <Text variant="p">{"Mantente al tanto de nuestras reuniones"}</Text>
-          <Text variant="h3">{"Todos los Jueves a las 10:00 AM"}</Text>
+          <Text variant="h4">{"Mantente al tanto de nuestras reuniones"}</Text>
+          <Text variant="h1" className="font-semibold italic mb-4">{"Todos los Jueves a las 10:00 AM"}</Text>
           <Button variant="light">{"LLAMADA SEMANAL"}</Button>
         </Section>
       );
     }
 
-    function Text({ variant = "p", children, className, inline = false }) {
+    function Text({
+      variant = "p",
+      children,
+      className,
+      inline = false,
+      ...props
+    }) {
       const fontSizeMap = {
         p: "text-base",
         h1: "text-4xl",
@@ -334,13 +380,14 @@
         sm: "text-sm",
         xs: "text-xs",
       };
-      const props = {
+      const spreadProps = {
         className: cn(fontSizeMap[variant], className),
+        ...props,
       };
       return inline === true ? (
-        <span {...props}>{children}</span>
+        <span {...spreadProps}>{children}</span>
       ) : (
-        <p {...props}>{children}</p>
+        <p {...spreadProps}>{children}</p>
       );
     }
 
@@ -360,7 +407,13 @@
       const props = {
         className: cn(
           variantMap[variant],
-          "rounded-sm py-1 px-3 text-center",
+          "rounded-sm py-2 px-5 text-center",
+          "text-base font-bold",
+          "transition-all duration-300",
+          "hover:scale-105",
+          "uppercase",
+          "shadow-sm",
+          "hover:cursor-pointer",
           className,
         ),
       };
@@ -387,10 +440,11 @@
         <div
           className={cn(
             "bg-gray-300 rounded-md flex justify-center items-center",
+            "shadow-lg",
           )}
           style={{ width: w, height: h }}
         >
-          <Text variant="h3" className="opacity-50 font-medium">
+          <Text variant="h3" className="opacity-30 font-medium">
             {title}
           </Text>
         </div>
