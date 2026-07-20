@@ -28,6 +28,8 @@
           "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-growith.png",
         businessAcademyLogo:
           "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-business-academy.png",
+        letsGrowith:
+          "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/lets-growith.png",
       },
       evento: {
         fecha: "30 de Julio",
@@ -167,8 +169,8 @@
           />
           <p>{"El crecimiento que estas buscando, esta en tus manos..."}</p>
           <img
-            src={assets.growithLogo}
-            alt="Growith Logo"
+            src={assets.letsGrowith}
+            alt="Lets Growith"
             className="h-10 object-contain"
           />
         </div>
@@ -261,11 +263,7 @@
             </div>
 
             <div className="w-[20%] flex justify-end">
-              <Button
-                variant="primary"
-                asLink={true}
-                href={data.url}
-              >
+              <Button variant="primary" asLink={true} href={data.url}>
                 {data.textoBtn}
               </Button>
             </div>
@@ -276,11 +274,16 @@
 
     function EspacioDeTrabajo() {
       return (
-        <Section parentClass={"bgc-stone"} className="flex justify-between items-center">
+        <Section
+          parentClass={"bgc-stone"}
+          className="flex justify-between items-center"
+        >
           <div>
             <Text variant="h3">{"Este es tu espacio de trabajo"}</Text>
             <Skeleton title="Logo" h="10rem" />
-            <Button variant="primary">{"Sube aqui tus implementaciones"}</Button>
+            <Button variant="primary">
+              {"Sube aqui tus implementaciones"}
+            </Button>
           </div>
 
           <div>
@@ -374,9 +377,7 @@
     function Section({ children, className, parentClass, ...props }) {
       return (
         <section className={cn("w-full", parentClass)} {...props}>
-          <div className={cn("w-[80%] mx-auto", className)}>
-            {children}
-          </div>
+          <div className={cn("w-[80%] mx-auto", className)}>{children}</div>
         </section>
       );
     }
@@ -389,7 +390,9 @@
           )}
           style={{ width: w, height: h }}
         >
-          <Text variant="h3" className="opacity-50 font-medium">{title}</Text>
+          <Text variant="h3" className="opacity-50 font-medium">
+            {title}
+          </Text>
         </div>
       );
     }
