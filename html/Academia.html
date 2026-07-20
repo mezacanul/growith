@@ -70,18 +70,61 @@
 
   <style>
     :root {
-      --brand-color: #09593a;
       --font-sans: "Montserrat", sans-serif;
+
+      --text-off-white: #f2f1ef;
+      --text-stone: #e1e1db;
+      --text-forest-green: #396743;
+      --text-dark-green: #1f3a26;
+      --text-night: #0d0f0e;
     }
-    body {
+    html {
       font-family: var(--font-sans) !important;
+      color: var(--text-night);
+      background-color: var(--text-off-white);
     }
-    .tc-brand {
-      color: var(--brand-color);
+    .text-white {
+      color: var(--text-off-white);
+    }
+    .bg-white {
+      background-color: var(--text-off-white);
+    }
+    .tc-primary {
+      color: var(--text-forest-green);
+    }
+    .tc-white {
+      color: var(--text-off-white);
+    }
+    .tc-stone {
+      color: var(--text-stone);
+    }
+    .tc-forest-green {
+      color: var(--text-forest-green);
+    }
+    .tc-dark-green {
+      color: var(--text-dark-green);
+    }
+    .tc-night {
+      color: var(--text-night);
     }
 
-    .bc-brand {
-      background-color: var(--brand-color);
+    .bgc-primary {
+      background-color: var(--text-forest-green);
+    }
+    .bgc-white {
+      background-color: var(--text-off-white);
+    }
+    .bgc-stone {
+      background-color: var(--text-stone);
+    }
+    .bgc-forest-green {
+      background-color: var(--text-forest-green);
+    }
+    .bgc-dark-green {
+      background-color: var(--text-dark-green);
+    }
+    .bgc-night {
+      background-color: var(--text-night);
     }
 
     .material-symbols-outlined {
@@ -166,7 +209,7 @@
             </div>
 
             <button
-              className="w-[35%] bc-brand rounded rounded-md py-1 px-3 text-white text-center"
+              className="w-[35%] bgc-primary tc-white rounded rounded-md py-1 px-3 text-center"
               type="button"
             >
               <a target="_blank" href={data.url}>
@@ -177,7 +220,7 @@
 
           {/* Version de escritorio */}
           <section className="hidden h-[20rem] md:flex gap-[2rem] w-full items-center justify-between">
-            <p className="w-[20%] font-medium tc-brand text-2xl">
+            <p className="w-[20%] font-medium tc-primary text-2xl">
               {data.textoIzq}
             </p>
 
@@ -207,7 +250,7 @@
 
             <div className="w-[20%] flex justify-end">
               <button
-                className="bc-brand rounded rounded-md py-1 px-3 text-white text-center"
+                className="bgc-primary tc-white rounded rounded-md py-1 px-3 text-center"
                 type="button"
               >
                 <a target="_blank" href={data.url}>
@@ -222,7 +265,7 @@
 
     function EspacioDeTrabajo() {
       return (
-        <section className="w-full bg-gray-200 flex justify-around items-center">
+        <section className="w-full bgc-stone flex justify-around items-center">
           <div>
             <h3>{"Este es tu espacio de trabajo"}</h3>
             <Skeleton title="Logo" h="10rem" />
