@@ -1,582 +1,594 @@
-<head>
-  <title>Growith | Academia</title>
-  <script>
-    /* @name window.GOOGLE_DATA */
-    /* @type {Object} */
-    /* @description Datos de ejemplo para el objeto window.GOOGLE_DATA. */
-    // Aqui se define el objeto window.GOOGLE_DATA.
-    // Google utiliza interpolacion para inyectar el objeto en el HTML,
-    // pero la cadena de texto que inyecta no es un objeto valido para
-    // este formato de archivo HTML.
-    // Por eso, aqui utilizamos un objeto con datos de ejemplo.
-    // Al subir el archivo Index.html a Google Sites,
-    // reemplazamos la definicion de window.GOOGLE_DATA en Google Scripts
-    // con el siguiente codigo:
+<!doctype html>
+<html>
+  <head>
+    <base target="_top" />
+    <title>Growith | Academia</title>
 
-    // window.GOOGLE_DATA = <?= JSON.stringify(data) ?>;
+    <!-- Esta linea es ignorada por Google Scripts. -->
+    <!-- Se tiene que crear un template y encadenar el metodo -->
+    <!-- addMetaTag para agregar la linea de viewport. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    // (Nota): Para que el codigo en Google Scripts funcione correctamente,
-    // el objeto `data` debe tener las mismas propiedades que los datos
-    // de ejemplo aqui definidos.
+    <script>
+      /* @name window.GOOGLE_DATA */
+      /* @type {Object} */
+      /* @description Datos de ejemplo para el objeto window.GOOGLE_DATA. */
+      // Aqui se define el objeto window.GOOGLE_DATA.
+      // Google utiliza interpolacion para inyectar el objeto en el HTML,
+      // pero la cadena de texto que inyecta no es un objeto valido para
+      // este formato de archivo HTML.
+      // Por eso, aqui utilizamos un objeto con datos de ejemplo.
+      // Al subir el archivo Index.html a Google Sites,
+      // reemplazamos la definicion de window.GOOGLE_DATA en Google Scripts
+      // con el siguiente codigo:
 
-    // Datos de ejemplo para el objeto window.GOOGLE_DATA.
-    window.GOOGLE_DATA = {
-      title: "Growith - Business Academy",
-      assets: {
-        heroBg:
-          "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/hero-bg.png",
-        growithLogo:
-          "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-growith.png",
-        businessAcademyLogo:
-          "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-business-academy.png",
-        letsGrowith:
-          "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/lets-growith.png",
-      },
-      evento: {
-        fecha: "30 de Julio",
-        hora: "10:00 AM",
-        url: "https://www.google.com",
-        textoBtn: "Contactanos",
-        textoIzq: "Suscribete a nuestro proximo evento",
-        titulo: "Evento de academia en Growith - Presencial (Merida, Yucatan)",
-        descripcion:
-          "Este es un evento publico realizado por Growith, donde se impartiran conocimientos basicos para el crecimiento de tu negocio.",
-      },
-    };
+      // window.GOOGLE_DATA = <?= JSON.stringify(data) ?>;
 
-    const paginas = [
-      { title: "Inicio", route: "/" },
-      { title: "Material de Trabajo", route: "material-de-trabajo" },
-    ];
+      // (Nota): Para que el codigo en Google Scripts funcione correctamente,
+      // el objeto `data` debe tener las mismas propiedades que los datos
+      // de ejemplo aqui definidos.
 
-    function cn(...classes) {
-      return classes.filter(Boolean).join(" ");
-    }
-  </script>
+      // Datos de ejemplo para el objeto window.GOOGLE_DATA.
+      window.GOOGLE_DATA = {
+        title: "Growith - Business Academy",
+        assets: {
+          heroBg:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/hero-bg.png",
+          growithLogo:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-growith.png",
+          businessAcademyLogo:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-business-academy.png",
+          letsGrowith:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/lets-growith.png",
+        },
+        evento: {
+          fecha: "30 de Julio",
+          hora: "10:00 AM",
+          url: "https://www.google.com",
+          textoBtn: "Contactanos",
+          textoIzq: "Suscribete a nuestro proximo evento",
+          titulo:
+            "Evento de academia en Growith - Presencial (Merida, Yucatan)",
+          descripcion:
+            "Este es un evento publico realizado por Growith, donde se impartiran conocimientos basicos para el crecimiento de tu negocio.",
+        },
+      };
 
-  <!-- Tailwind V3  -->
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-  <!-- Tailwind V4 -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <!-- Material Symbols -->
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- React -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <!-- Babel -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
-    rel="stylesheet"
-  />
+      const paginas = [
+        { title: "Inicio", route: "/" },
+        { title: "Material de Trabajo", route: "material-de-trabajo" },
+      ];
 
-  <style>
-    :root {
-      --font-sans: "Montserrat", sans-serif;
+      function cn(...classes) {
+        return classes.filter(Boolean).join(" ");
+      }
+    </script>
 
-      --text-off-white: #f2f1ef;
-      --text-stone: #e1e1db;
-      --text-forest-green: #396743;
-      --text-dark-green: #1f3a26;
-      --text-night: #0d0f0e;
-    }
-    html {
-      font-family: var(--font-sans) !important;
-      color: var(--text-night);
-      background-color: var(--text-off-white);
-    }
-    body {
-      overflow-x: hidden;
-    }
-    .text-white {
-      color: var(--text-off-white);
-    }
-    .bg-white {
-      background-color: var(--text-off-white);
-    }
-    .tc-primary {
-      color: var(--text-forest-green);
-    }
-    .tc-white {
-      color: var(--text-off-white);
-    }
-    .tc-stone {
-      color: var(--text-stone);
-    }
-    .tc-forest-green {
-      color: var(--text-forest-green);
-    }
-    .tc-dark-green {
-      color: var(--text-dark-green);
-    }
-    .tc-night {
-      color: var(--text-night);
-    }
+    <!-- Tailwind V3  -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- Tailwind V4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
-    .bgc-primary {
-      background-color: var(--text-forest-green);
-    }
-    .bgc-white {
-      background-color: var(--text-off-white);
-    }
-    .bgc-stone {
-      background-color: var(--text-stone);
-    }
-    .bgc-forest-green {
-      background-color: var(--text-forest-green);
-    }
-    .bgc-dark-green {
-      background-color: var(--text-dark-green);
-    }
-    .bgc-night {
-      background-color: var(--text-night);
-    }
+    <style>
+      :root {
+        --font-sans: "Montserrat", sans-serif;
 
-    .material-symbols-outlined {
-      font-size: 30px;
-    }
-  </style>
-</head>
-
-<body className="bg-slate-100">
-  <div id="root"></div>
-
-  <script type="text/babel">
-    // Importamos useState y useEffect como objetos de React
-    const { useState, useEffect } = React;
-
-    // Componente principal
-    function App({ data }) {
-      return (
-        <div className="w-[100vw]">
-          {/* Menu de navegacion */}
-          <Header assets={data.assets} />
-
-          {/* Contenido principal de la pagina */}
-          <Hero assets={data.assets} />
-          <Evento data={data.evento} />
-          <EspacioDeTrabajo />
-          <ImplementacionesDestacadas />
-          <Reuniones assets={data.assets} />
-        </div>
-      );
-    }
-
-    function Header({ assets }) {
-      const [scrolled, setScrolled] = useState(false);
-      const [menuOpen, setMenuOpen] = useState(false);
-      const [showContent, setShowContent] = useState(false);
-
-      useEffect(() => {
-        const handleScroll = () => {
-          const next = window.scrollY > 80;
-          setScrolled((prev) => (prev !== next ? next : prev));
-        };
-        handleScroll();
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-      }, []);
-
-      function toggleMenu() {
-        setMenuOpen((prev) => !prev);
+        --text-off-white: #f2f1ef;
+        --text-stone: #e1e1db;
+        --text-forest-green: #396743;
+        --text-dark-green: #1f3a26;
+        --text-night: #0d0f0e;
+      }
+      html {
+        font-family: var(--font-sans) !important;
+        color: var(--text-night);
+        background-color: var(--text-off-white);
+      }
+      body {
+        overflow-x: hidden;
+      }
+      .text-white {
+        color: var(--text-off-white);
+      }
+      .bg-white {
+        background-color: var(--text-off-white);
+      }
+      .tc-primary {
+        color: var(--text-forest-green);
+      }
+      .tc-white {
+        color: var(--text-off-white);
+      }
+      .tc-stone {
+        color: var(--text-stone);
+      }
+      .tc-forest-green {
+        color: var(--text-forest-green);
+      }
+      .tc-dark-green {
+        color: var(--text-dark-green);
+      }
+      .tc-night {
+        color: var(--text-night);
       }
 
-      useEffect(() => {
-        if (menuOpen === true) {
-          setTimeout(() => {
-            setShowContent(true);
-          }, 200);
-        } else {
-          setShowContent(false);
+      .bgc-primary {
+        background-color: var(--text-forest-green);
+      }
+      .bgc-white {
+        background-color: var(--text-off-white);
+      }
+      .bgc-stone {
+        background-color: var(--text-stone);
+      }
+      .bgc-forest-green {
+        background-color: var(--text-forest-green);
+      }
+      .bgc-dark-green {
+        background-color: var(--text-dark-green);
+      }
+      .bgc-night {
+        background-color: var(--text-night);
+      }
+
+      .material-symbols-outlined {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body className="bg-slate-100">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Importamos useState y useEffect como objetos de React
+      const { useState, useEffect } = React;
+
+      // Componente principal
+      function App({ data }) {
+        return (
+          <div className="w-[100vw]">
+            {/* Menu de navegacion */}
+            <Header assets={data.assets} />
+
+            {/* Contenido principal de la pagina */}
+            <Hero assets={data.assets} />
+            <Evento data={data.evento} />
+            <EspacioDeTrabajo />
+            <ImplementacionesDestacadas />
+            <Reuniones assets={data.assets} />
+          </div>
+        );
+      }
+
+      function Header({ assets }) {
+        const [scrolled, setScrolled] = useState(false);
+        const [menuOpen, setMenuOpen] = useState(false);
+        const [showContent, setShowContent] = useState(false);
+
+        useEffect(() => {
+          const handleScroll = () => {
+            const next = window.scrollY > 80;
+            setScrolled((prev) => (prev !== next ? next : prev));
+          };
+          handleScroll();
+          window.addEventListener("scroll", handleScroll);
+          return () => window.removeEventListener("scroll", handleScroll);
+        }, []);
+
+        function toggleMenu() {
+          setMenuOpen((prev) => !prev);
         }
-      }, [menuOpen]);
 
-      return (
-        <>
-          <header
-            className={cn(
-              "fixed top-0 left-0 w-full py-5 lg:py-6 z-50",
-              "transition-all duration-200",
-              scrolled ? "bgc-night shadow-md" : "",
-            )}
-          >
-            <div className="flex w-[90%] mx-auto justify-between items-center text-white">
-              {/* Logo Growith */}
-              <img
-                className="h-6 object-contain"
-                src={assets.growithLogo}
-                alt="Growith Logo"
-              />
+        useEffect(() => {
+          if (menuOpen === true) {
+            setTimeout(() => {
+              setShowContent(true);
+            }, 200);
+          } else {
+            setShowContent(false);
+          }
+        }, [menuOpen]);
 
-              {/* Boton de menu de navegacion version mobil */}
-              <span
-                onClick={toggleMenu}
-                className="material-symbols-outlined block lg:hidden tc-white cursor-pointer"
-                style={{ fontSize: "2.4rem" }}
-              >
-                {"menu"}
-              </span>
+        return (
+          <>
+            <header
+              className={cn(
+                "fixed top-0 left-0 w-full py-5 lg:py-6 z-50",
+                "transition-all duration-200",
+                scrolled ? "bgc-night shadow-md" : "",
+              )}
+            >
+              <div className="flex w-[90%] mx-auto justify-between items-center text-white">
+                {/* Logo Growith */}
+                <img
+                  className="h-6 object-contain"
+                  src={assets.growithLogo}
+                  alt="Growith Logo"
+                />
 
-              {/* Menu de navegacion version de escritorio */}
-              <div className="hidden lg:flex items-center gap-4">
-                {paginas.map((pagina) => (
-                  <a key={pagina.title} href={pagina.route}>
-                    {pagina.title}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </header>
-
-          {/* Menu de navegacion version mobil */}
-          <div
-            className={cn(
-              "fixed top-0 left-0 h-full bgc-night z-50 text-white",
-              menuOpen === true ? "w-full" : "w-0",
-              "transition-all duration-200",
-            )}
-          >
-            {/* Contenido del menu */}
-            {showContent === true && (
-              <div
-                className={cn(
-                  "relative w-full h-full p-5",
-                  "transition-all duration-300",
-                )}
-              >
+                {/* Boton de menu de navegacion version mobil */}
                 <span
                   onClick={toggleMenu}
-                  className={cn(
-                    "material-symbols-outlined block lg:hidden tc-white cursor-pointer",
-                    "absolute top-5 right-5",
-                  )}
+                  className="material-symbols-outlined block lg:hidden tc-white cursor-pointer"
                   style={{ fontSize: "2.4rem" }}
                 >
-                  {"close"}
+                  {"menu"}
                 </span>
-                <div className="p-5 w-full h-full flex flex-col gap-4">
+
+                {/* Menu de navegacion version de escritorio */}
+                <div className="hidden lg:flex items-center gap-4">
                   {paginas.map((pagina) => (
-                    <span className="text-xl" key={pagina.title}>{pagina.title}</span>
+                    <a key={pagina.title} href={pagina.route}>
+                      {pagina.title}
+                    </a>
                   ))}
                 </div>
               </div>
-            )}
-          </div>
-        </>
-      );
-    }
+            </header>
 
-    function Hero({ assets }) {
-      return (
-        <Section
-          className={cn(
-            "text-white text-center flex flex-col items-center justify-center",
-            `bg-cover bg-center h-[30rem]`,
-            "gap-4 lg:gap-4",
-          )}
-          style={{ backgroundImage: `url(${assets.heroBg})` }}
-        >
-          <Text variant="h5" className="font-light">
-            {"Bienvenido a"}
-          </Text>
-          <img
-            src={assets.businessAcademyLogo}
-            alt="Business Academy Logo"
-            className="h-auto lg:h-18 object-contain"
-          />
-          <Text
-            // variant="h4"
-            className="text-lg lg:text-xl lg:border-b-2 lg:pb-2 w-75 lg:w-auto"
-            style={{ borderColor: "var(--text-off-white)" }}
-          >
-            {"El crecimiento que estas buscando, esta en tus manos..."}
-          </Text>
-          <img
-            src={assets.letsGrowith}
-            alt="Lets Growith"
-            className="h-auto w-[85%] lg:h-10 lg:w-auto object-contain"
-          />
-        </Section>
-      );
-    }
-
-    function Evento({ data }) {
-      return (
-        <>
-          {/* Version mobil */}
-          <Section
-            className={cn(
-              "flex py-10 flex-col items-start gap-[1rem] lg:hidden",
-            )}
-          >
-            <div className="w-[100%] h-full flex flex-col gap-2">
-              <Text variant="h3" className="font-bold">
-                {data.titulo}
-              </Text>
-
-              <div className="w-[100%] flex flex-col gap-3 justify-between font-bold">
-                <div className="flex items-center gap-1">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: "20px" }}
-                  >
-                    {"event_available"}
-                  </span>
-                  <span className="text-sm"> {data.fecha} </span>
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: "20px" }}
-                  >
-                    {"schedule"}
-                  </span>
-                  <span className="text-sm">{data.hora}</span>
-                </div>
-              </div>
-
-              <Text variant="p">{data.descripcion}</Text>
-            </div>
-
-            <Button
-              variant="primary"
-              className="w-[50%]"
-              asLink={true}
-              href={data.url}
+            {/* Menu de navegacion version mobil */}
+            <div
+              className={cn(
+                "fixed top-0 left-0 h-full bgc-night z-50 text-white",
+                menuOpen === true ? "w-full" : "w-0",
+                "transition-all duration-200",
+              )}
             >
-              {data.textoBtn}
-            </Button>
-          </Section>
-
-          {/* Version de escritorio */}
-          <Section className="hidden h-[25rem] lg:flex gap-[2rem] items-center justify-between">
-            <Text variant="h2" className="w-[25%] tc-primary">
-              {data.textoIzq}
-            </Text>
-
-            <div className="w-[50%] flex justify-center items-center text-center">
-              <div className="flex flex-col gap-3 w-[75%] h-full">
-                <Text variant="h2" className="font-bold">
-                  {data.titulo}
-                </Text>
-                <Text variant="p">{data.descripcion}</Text>
-                <div className="w-[100%] flex justify-between font-bold">
-                  <div className="flex items-center gap-2">
-                    <Text
-                      variant="p"
-                      inline
-                      className="material-symbols-outlined"
-                    >
-                      {"event_available"}
-                    </Text>
-                    <Text variant="p" inline>
-                      {data.fecha}
-                    </Text>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Text
-                      variant="p"
-                      inline
-                      className="material-symbols-outlined"
-                    >
-                      {"schedule"}
-                    </Text>
-                    <Text variant="p" inline>
-                      {data.hora}
-                    </Text>
+              {/* Contenido del menu */}
+              {showContent === true && (
+                <div
+                  className={cn(
+                    "relative w-full h-full p-5",
+                    "transition-all duration-300",
+                  )}
+                >
+                  <span
+                    onClick={toggleMenu}
+                    className={cn(
+                      "material-symbols-outlined block lg:hidden tc-white cursor-pointer",
+                      "absolute top-5 right-5",
+                    )}
+                    style={{ fontSize: "2.4rem" }}
+                  >
+                    {"close"}
+                  </span>
+                  <div className="p-5 w-full h-full flex flex-col gap-4">
+                    {paginas.map((pagina) => (
+                      <span className="text-xl" key={pagina.title}>
+                        {pagina.title}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </div>
+              )}
             </div>
-
-            <div className="w-[25%] flex justify-end">
-              <Button variant="primary" asLink={true} href={data.url}>
-                {data.textoBtn}
-              </Button>
-            </div>
-          </Section>
-        </>
-      );
-    }
-
-    function EspacioDeTrabajo() {
-      return (
-        <Section
-          parentClass={"bgc-stone"}
-          className={cn(
-            "flex flex-col lg:grid grid-cols-5 justify-between items-center py-[6rem]",
-            "gap-15 lg:gap-0",
-          )}
-        >
-          <div className="col-span-3 flex flex-col items-start gap-[1.5rem]">
-            <Text variant="h3" className="text-center lg:text-left">
-              {"Este es tu espacio de trabajo"}
-            </Text>
-            <div className="w-full lg:w-[30rem] h-[10rem]">
-              <Skeleton title="Logo" />
-            </div>
-
-            <Button variant="primary">
-              {"Sube aqui tus implementaciones"}
-            </Button>
-          </div>
-
-          <div className="col-span-2 flex flex-col items-center justify-center gap-[1.5rem]">
-            <div className="text-center flex flex-col items-center justify-center gap-1">
-              <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
-              <Text variant="h4" className={"font-bold tc-primary"}>
-                {"MARZO 2026"}
-              </Text>
-            </div>
-            <Skeleton title="Calendario" h="26rem" />
-            <Button variant="primary">{"Ver calendario"}</Button>
-          </div>
-        </Section>
-      );
-    }
-
-    function ImplementacionesDestacadas() {
-      return (
-        <Section
-          className={cn(
-            "flex flex-col lg:grid h-auto lg:h-[35rem] grid-cols-5 justify-around items-center gap-5",
-            "gap-15 lg:gap-0",
-            "text-center lg:text-left",
-            "py-15 lg:py-0",
-          )}
-        >
-          <Text variant="h2" className="col-span-2">
-            {"Encuentra aqui tus implementaciones mas destacadas"}
-          </Text>
-          <div className="col-span-3 w-full lg:w-auto">
-            <Skeleton title="Implementacion 1" h="20rem" />
-          </div>
-        </Section>
-      );
-    }
-
-    function Reuniones({ assets }) {
-      return (
-        <Section
-          className="h-[20rem] text-white flex flex-col justify-center items-center gap-3"
-          style={{ backgroundImage: `url(${assets.heroBg})` }}
-        >
-          <Text variant="h4" className={"text-center"}>
-            {"Mantente al tanto de nuestras reuniones"}
-          </Text>
-          <Text variant="h1" className="text-center font-bold italic mb-4">
-            {"Todos los Jueves a las 10:00 AM"}
-          </Text>
-          <Button variant="light">{"LLAMADA SEMANAL"}</Button>
-        </Section>
-      );
-    }
-
-    function Text({
-      variant = "p",
-      children,
-      className,
-      inline = false,
-      ...props
-    }) {
-      const fontSizeMap = {
-        p: "text-base",
-        h1: "text-4xl",
-        h2: "text-3xl",
-        h3: "text-2xl",
-        h4: "text-xl",
-        h5: "text-lg",
-        h6: "text-base",
-        sm: "text-sm",
-        xs: "text-xs",
-      };
-      const spreadProps = {
-        className: cn(fontSizeMap[variant], className),
-        ...props,
-      };
-      return inline === true ? (
-        <span {...spreadProps}>{children}</span>
-      ) : (
-        <p {...spreadProps}>{children}</p>
-      );
-    }
-
-    function Button({
-      variant = "primary",
-      children,
-      className,
-      asLink = false,
-      href = "",
-      target = "_blank",
-    }) {
-      const variantMap = {
-        primary: "bgc-primary tc-white",
-        light: "bgc-white tc-primary",
-        dark: "bgc-night tc-white",
-      };
-      const props = {
-        className: cn(
-          variantMap[variant],
-          "rounded-sm py-2 px-5 text-center",
-          "text-base font-bold",
-          "transition-all duration-300",
-          "hover:scale-105",
-          "uppercase",
-          "shadow-sm",
-          "hover:cursor-pointer",
-          className,
-        ),
-      };
-      if (asLink === true) {
-        return (
-          <a target={target} href={href} {...props}>
-            {children}
-          </a>
+          </>
         );
       }
-      return <button {...props}>{children}</button>;
-    }
 
-    function Section({ children, className, parentClass, ...props }) {
-      return (
-        <section
-          className={cn("w-full flex justify-center", parentClass)}
-          {...props}
-        >
-          <div className={cn("w-[85%] lg:w-[80%] lg:mx-auto", className)}>
-            {children}
+      function Hero({ assets }) {
+        return (
+          <Section
+            className={cn(
+              "text-white text-center flex flex-col items-center justify-center",
+              `bg-cover bg-center h-[30rem]`,
+              "gap-4 lg:gap-4",
+            )}
+            style={{ backgroundImage: `url(${assets.heroBg})` }}
+          >
+            <Text variant="h5" className="font-light">
+              {"Bienvenido a"}
+            </Text>
+            <img
+              src={assets.businessAcademyLogo}
+              alt="Business Academy Logo"
+              className="h-auto lg:h-18 object-contain"
+            />
+            <Text
+              // variant="h4"
+              className="text-lg lg:text-xl lg:border-b-2 lg:pb-2 w-75 lg:w-auto"
+              style={{ borderColor: "var(--text-off-white)" }}
+            >
+              {"El crecimiento que estas buscando, esta en tus manos..."}
+            </Text>
+            <img
+              src={assets.letsGrowith}
+              alt="Lets Growith"
+              className="h-auto w-[85%] lg:h-10 lg:w-auto object-contain"
+            />
+          </Section>
+        );
+      }
+
+      function Evento({ data }) {
+        return (
+          <>
+            {/* Version mobil */}
+            <Section
+              className={cn(
+                "flex py-10 flex-col items-start gap-[1rem] lg:hidden",
+              )}
+            >
+              <div className="w-[100%] h-full flex flex-col gap-2">
+                <Text variant="h3" className="font-bold">
+                  {data.titulo}
+                </Text>
+
+                <div className="w-[100%] flex flex-col gap-3 justify-between font-bold">
+                  <div className="flex items-center gap-1">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "20px" }}
+                    >
+                      {"event_available"}
+                    </span>
+                    <span className="text-sm"> {data.fecha} </span>
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "20px" }}
+                    >
+                      {"schedule"}
+                    </span>
+                    <span className="text-sm">{data.hora}</span>
+                  </div>
+                </div>
+
+                <Text variant="p">{data.descripcion}</Text>
+              </div>
+
+              <Button
+                variant="primary"
+                className="w-[50%]"
+                asLink={true}
+                href={data.url}
+              >
+                {data.textoBtn}
+              </Button>
+            </Section>
+
+            {/* Version de escritorio */}
+            <Section className="hidden h-[25rem] lg:flex gap-[2rem] items-center justify-between">
+              <Text variant="h2" className="w-[25%] tc-primary">
+                {data.textoIzq}
+              </Text>
+
+              <div className="w-[50%] flex justify-center items-center text-center">
+                <div className="flex flex-col gap-3 w-[75%] h-full">
+                  <Text variant="h2" className="font-bold">
+                    {data.titulo}
+                  </Text>
+                  <Text variant="p">{data.descripcion}</Text>
+                  <div className="w-[100%] flex justify-between font-bold">
+                    <div className="flex items-center gap-2">
+                      <Text
+                        variant="p"
+                        inline
+                        className="material-symbols-outlined"
+                      >
+                        {"event_available"}
+                      </Text>
+                      <Text variant="p" inline>
+                        {data.fecha}
+                      </Text>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Text
+                        variant="p"
+                        inline
+                        className="material-symbols-outlined"
+                      >
+                        {"schedule"}
+                      </Text>
+                      <Text variant="p" inline>
+                        {data.hora}
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-[25%] flex justify-end">
+                <Button variant="primary" asLink={true} href={data.url}>
+                  {data.textoBtn}
+                </Button>
+              </div>
+            </Section>
+          </>
+        );
+      }
+
+      function EspacioDeTrabajo() {
+        return (
+          <Section
+            parentClass={"bgc-stone"}
+            className={cn(
+              "flex flex-col lg:grid grid-cols-5 justify-between items-center py-[6rem]",
+              "gap-15 lg:gap-0",
+            )}
+          >
+            <div className="col-span-3 flex flex-col items-start gap-[1.5rem]">
+              <Text variant="h3" className="text-center lg:text-left">
+                {"Este es tu espacio de trabajo"}
+              </Text>
+              <div className="w-full lg:w-[30rem] h-[10rem]">
+                <Skeleton title="Logo" />
+              </div>
+
+              <Button variant="primary">
+                {"Sube aqui tus implementaciones"}
+              </Button>
+            </div>
+
+            <div className="col-span-2 flex flex-col items-center justify-center gap-[1.5rem]">
+              <div className="text-center flex flex-col items-center justify-center gap-1">
+                <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
+                <Text variant="h4" className={"font-bold tc-primary"}>
+                  {"MARZO 2026"}
+                </Text>
+              </div>
+              <Skeleton title="Calendario" h="26rem" />
+              <Button variant="primary">{"Ver calendario"}</Button>
+            </div>
+          </Section>
+        );
+      }
+
+      function ImplementacionesDestacadas() {
+        return (
+          <Section
+            className={cn(
+              "flex flex-col lg:grid h-auto lg:h-[35rem] grid-cols-5 justify-around items-center gap-5",
+              "gap-15 lg:gap-0",
+              "text-center lg:text-left",
+              "py-15 lg:py-0",
+            )}
+          >
+            <Text variant="h2" className="col-span-2">
+              {"Encuentra aqui tus implementaciones mas destacadas"}
+            </Text>
+            <div className="col-span-3 w-full lg:w-auto">
+              <Skeleton title="Implementacion 1" h="20rem" />
+            </div>
+          </Section>
+        );
+      }
+
+      function Reuniones({ assets }) {
+        return (
+          <Section
+            className="h-[20rem] text-white flex flex-col justify-center items-center gap-3"
+            style={{ backgroundImage: `url(${assets.heroBg})` }}
+          >
+            <Text variant="h4" className={"text-center"}>
+              {"Mantente al tanto de nuestras reuniones"}
+            </Text>
+            <Text variant="h1" className="text-center font-bold italic mb-4">
+              {"Todos los Jueves a las 10:00 AM"}
+            </Text>
+            <Button variant="light">{"LLAMADA SEMANAL"}</Button>
+          </Section>
+        );
+      }
+
+      function Text({
+        variant = "p",
+        children,
+        className,
+        inline = false,
+        ...props
+      }) {
+        const fontSizeMap = {
+          p: "text-base",
+          h1: "text-4xl",
+          h2: "text-3xl",
+          h3: "text-2xl",
+          h4: "text-xl",
+          h5: "text-lg",
+          h6: "text-base",
+          sm: "text-sm",
+          xs: "text-xs",
+        };
+        const spreadProps = {
+          className: cn(fontSizeMap[variant], className),
+          ...props,
+        };
+        return inline === true ? (
+          <span {...spreadProps}>{children}</span>
+        ) : (
+          <p {...spreadProps}>{children}</p>
+        );
+      }
+
+      function Button({
+        variant = "primary",
+        children,
+        className,
+        asLink = false,
+        href = "",
+        target = "_blank",
+      }) {
+        const variantMap = {
+          primary: "bgc-primary tc-white",
+          light: "bgc-white tc-primary",
+          dark: "bgc-night tc-white",
+        };
+        const props = {
+          className: cn(
+            variantMap[variant],
+            "rounded-sm py-2 px-5 text-center",
+            "text-base font-bold",
+            "transition-all duration-300",
+            "hover:scale-105",
+            "uppercase",
+            "shadow-sm",
+            "hover:cursor-pointer",
+            className,
+          ),
+        };
+        if (asLink === true) {
+          return (
+            <a target={target} href={href} {...props}>
+              {children}
+            </a>
+          );
+        }
+        return <button {...props}>{children}</button>;
+      }
+
+      function Section({ children, className, parentClass, ...props }) {
+        return (
+          <section
+            className={cn("w-full flex justify-center", parentClass)}
+            {...props}
+          >
+            <div className={cn("w-[85%] lg:w-[80%] lg:mx-auto", className)}>
+              {children}
+            </div>
+          </section>
+        );
+      }
+
+      function Skeleton({ title, w = "100%", h = "100%" }) {
+        return (
+          <div
+            className={cn(
+              "bg-gray-300 rounded-md flex justify-center items-center",
+              "shadow-lg",
+            )}
+            style={{ width: w, height: h }}
+          >
+            <Text variant="h3" className="opacity-30 font-medium">
+              {title}
+            </Text>
           </div>
-        </section>
-      );
-    }
+        );
+      }
 
-    function Skeleton({ title, w = "100%", h = "100%" }) {
-      return (
-        <div
-          className={cn(
-            "bg-gray-300 rounded-md flex justify-center items-center",
-            "shadow-lg",
-          )}
-          style={{ width: w, height: h }}
-        >
-          <Text variant="h3" className="opacity-30 font-medium">
-            {title}
-          </Text>
-        </div>
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <App data={window.GOOGLE_DATA} />,
       );
-    }
-
-    ReactDOM.createRoot(document.getElementById("root")).render(
-      <App data={window.GOOGLE_DATA} />,
-    );
-  </script>
-</body>
+    </script>
+  </body>
+</html>
