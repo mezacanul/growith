@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+  <head>
+    <base target="_top" />
+
+    <!-- Estas lineas son ignoradas por Google Scripts. -->
+    <!-- Se crea una template y se encadenan los metodos: -->
+    <!-- setTitle y addMetaTag. -->
+    <title>Growith | Academia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      /* @name window.GOOGLE_DATA */
+      /* @type {Object} */
+      /* @description Datos de ejemplo para el objeto window.GOOGLE_DATA. */
+      // Aqui se define el objeto window.GOOGLE_DATA.
+      // Google utiliza interpolacion para inyectar el objeto en el HTML,
+      // pero la cadena de texto que inyecta no es un objeto valido para
+      // este formato de archivo HTML.
+      // Por eso, aqui utilizamos un objeto con datos de ejemplo.
+
+      // (Nota): Para que el codigo en Google Scripts funcione correctamente,
+      // el objeto `data` debe tener las mismas propiedades que los datos
+      // de ejemplo aqui definidos.
+
+      // Datos de ejemplo para el objeto window.GOOGLE_DATA.
+      window.GOOGLE_DATA = {
+        test: "Hi Google Data"
+      };
+
+      // Al subir el archivo Index.html a Google Sites,
+      // reemplazamos la definicion de window.GOOGLE_DATA en Google Scripts
+      // con el siguiente codigo:
+
+      // const jsonData = <?= data ?>;
+      // window.GOOGLE_DATA = JSON.parse(jsonData)
+
+      console.log("Google Data typeof:", typeof window.GOOGLE_DATA);
+      console.log("Google Data:", window.GOOGLE_DATA);
+
+      function cn(...classes) {
+        return classes.filter(Boolean).join(" ");
+      }
+    </script>
+
+    <!-- Tailwind V3  -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- Tailwind V4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-sans: "Montserrat", sans-serif;
+
+        --text-off-white: #f2f1ef;
+        --text-stone: #e1e1db;
+        --text-forest-green: #396743;
+        --text-dark-green: #1f3a26;
+        --text-night: #0d0f0e;
+      }
+      html {
+        font-family: var(--font-sans) !important;
+        color: var(--text-night);
+        background-color: var(--text-off-white);
+        scroll-behavior: smooth;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      .text-white {
+        color: var(--text-off-white);
+      }
+      .bg-white {
+        background-color: var(--text-off-white);
+      }
+      .tc-primary {
+        color: var(--text-forest-green);
+      }
+      .tc-white {
+        color: var(--text-off-white);
+      }
+      .tc-stone {
+        color: var(--text-stone);
+      }
+      .tc-forest-green {
+        color: var(--text-forest-green);
+      }
+      .tc-dark-green {
+        color: var(--text-dark-green);
+      }
+      .tc-night {
+        color: var(--text-night);
+      }
+
+      .bgc-primary {
+        background-color: var(--text-forest-green);
+      }
+      .bgc-white {
+        background-color: var(--text-off-white);
+      }
+      .bgc-stone {
+        background-color: var(--text-stone);
+      }
+      .bgc-forest-green {
+        background-color: var(--text-forest-green);
+      }
+      .bgc-dark-green {
+        background-color: var(--text-dark-green);
+      }
+      .bgc-night {
+        background-color: var(--text-night);
+      }
+
+      .material-symbols-outlined {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body className="bg-slate-100">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Importamos useState y useEffect como objetos de React
+      const { useState, useEffect } = React;
+
+      // Componente principal
+      function App({ data }) {
+        <div>
+          <p>Hola Lista de Websites Academia</p>
+          <p>{data.test}</p>
+        </div>;
+      }
+
+      // ------------------------------
+      // Componentes reutilizables
+      // ------------------------------
+      // Text
+      // Button
+      // Section
+      // IFrame
+      // Skeleton
+      // ------------------------------
+      function Text({
+        variant = "p",
+        children,
+        className,
+        inline = false,
+        ...props
+      }) {
+        const fontSizeMap = {
+          p: "text-base",
+          h1: "text-4xl",
+          h2: "text-3xl",
+          h3: "text-2xl",
+          h4: "text-xl",
+          h5: "text-lg",
+          h6: "text-base",
+          sm: "text-sm",
+          xs: "text-xs",
+        };
+        const spreadProps = {
+          className: cn(fontSizeMap[variant], className),
+          ...props,
+        };
+        return inline === true ? (
+          <span {...spreadProps}>{children}</span>
+        ) : (
+          <p {...spreadProps}>{children}</p>
+        );
+      }
+
+      function Button({
+        variant = "primary",
+        children,
+        className,
+        asLink = false,
+        href = "",
+        target = "_blank",
+      }) {
+        const variantMap = {
+          primary: "bgc-primary tc-white",
+          light: "bgc-white tc-primary",
+          dark: "bgc-night tc-white",
+        };
+        const props = {
+          className: cn(
+            variantMap[variant],
+            "rounded-sm py-2 px-5 text-center",
+            "text-base font-bold",
+            "transition-all duration-300",
+            "hover:scale-105",
+            "uppercase",
+            "shadow-sm",
+            "hover:cursor-pointer",
+            className,
+          ),
+        };
+        if (asLink === true) {
+          return (
+            <a target={target} href={href} {...props}>
+              {children}
+            </a>
+          );
+        }
+        return <button {...props}>{children}</button>;
+      }
+
+      function Section({ children, className, parentClass, ...props }) {
+        return (
+          <section
+            className={cn("w-full flex justify-center", parentClass)}
+            {...props}
+          >
+            <div className={cn("w-[85%] lg:w-[80%] lg:mx-auto", className)}>
+              {children}
+            </div>
+          </section>
+        );
+      }
+
+      function IFrame({ src, className }) {
+        return (
+          <iframe
+            src={src}
+            className={cn(
+              "w-full h-full",
+              "bg-[#FFFFFF] rounded-md shadow-md border-4 border-gray-300",
+              className,
+            )}
+          ></iframe>
+        );
+      }
+
+      function Skeleton({ title, w = "100%", h = "100%" }) {
+        return (
+          <div
+            className={cn(
+              "bg-gray-300 rounded-md flex justify-center items-center",
+              "shadow-lg",
+            )}
+            style={{ width: w, height: h }}
+          >
+            <Text variant="h3" className="opacity-30 font-medium">
+              {title}
+            </Text>
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <App data={window.GOOGLE_DATA} />,
+      );
+    </script>
+  </body>
+</html>

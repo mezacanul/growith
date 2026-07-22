@@ -26,6 +26,7 @@
       // Datos de ejemplo para el objeto window.GOOGLE_DATA.
       window.GOOGLE_DATA = {
         period: "MARZO 2026",
+        modality: "presencial",
         assets: {
           heroBg:
             "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/hero-bg.png",
@@ -54,10 +55,12 @@
         drive: {
           impURL:
             // "https://drive.google.com/embeddedfolderview?id=12Rd5E0SLKetEJb_Vz4DQV28VICtxjIx6#grid",
-          "https://drive.google.com/drive/folders/12Rd5E0SLKetEJb_Vz4DQV28VICtxjIx6?usp=drive_link",
+            "https://drive.google.com/drive/folders/12Rd5E0SLKetEJb_Vz4DQV28VICtxjIx6?usp=drive_link",
           impDestacadasURL:
-            "https://drive.google.com/embeddedfolderview?id=1mMqB-DejHbMszssW36U7Gx1qbTCyMt6q#grid",
+            "https://drive.google.com/embeddedfolderview?id=1mMqB-DejHbMszssW36U7Gx1qbTCyMt6q#list",
           // "https://drive.google.com/drive/folders/1mMqB-DejHbMszssW36U7Gx1qbTCyMt6q?usp=drive_link",
+          resourcesURL:
+            "https://drive.google.com/embeddedfolderview?id=1O2yklXNRRkBleM7ngubKLaxzXX59_tQ5#list",
         },
         meet: {
           meetURL: "https://meet.google.com/pqp-xmcc-czi",
@@ -73,9 +76,8 @@
       // const jsonData = <?= data ?>;
       // window.GOOGLE_DATA = JSON.parse(jsonData)
 
-      console.log("Google Data typeof:", typeof window.GOOGLE_DATA)
-      console.log("Google Data:", window.GOOGLE_DATA)
-
+      console.log("Google Data typeof:", typeof window.GOOGLE_DATA);
+      console.log("Google Data:", window.GOOGLE_DATA);
 
       const paginas = [
         { title: "Inicio", route: "/" },
@@ -123,6 +125,7 @@
         font-family: var(--font-sans) !important;
         color: var(--text-night);
         background-color: var(--text-off-white);
+        scroll-behavior: smooth;
       }
       body {
         overflow-x: hidden;
@@ -186,26 +189,45 @@
 
       // Componente principal
       function App({ data }) {
+        const [page, setPage] = useState("/");
+
         return (
           <div className="w-[100vw]">
             {/* Menu de navegacion */}
-            <Header assets={data.assets} />
+            <Header assets={data.assets} setPage={setPage} />
 
-            {/* Contenido principal de la pagina */}
-            <Hero assets={data.assets} />
-            <Evento data={data.evento} />
-            <EspacioDeTrabajo
-              drive={data.drive}
-              assets={data.assets}
-              period={data.period}
-            />
-            <ImplementacionesDestacadas drive={data.drive} />
-            <Reuniones assets={data.assets} meet={data.meet} />
+            {page === "/" && (
+              <>
+                {/* Contenido principal de la pagina */}
+                <HeroRoot assets={data.assets} />
+                <Evento data={data.evento} />
+                <EspacioDeTrabajo
+                  drive={data.drive}
+                  assets={data.assets}
+                  period={data.period}
+                  modality={data.modality}
+                />
+                <ImplementacionesDestacadas drive={data.drive} />
+                <Reuniones assets={data.assets} meet={data.meet} />
+              </>
+            )}
+
+            {page === "material-de-trabajo" && (
+              <>
+                {/* Contenido principal de la pagina */}
+                <HeroMT assets={data.assets} />
+                <MaterialDeTrabajo
+                  drive={data.drive}
+                  modality={data.modality}
+                  period={data.period}
+                />
+              </>
+            )}
           </div>
         );
       }
 
-      function Header({ assets }) {
+      function Header({ assets, setPage }) {
         const [scrolled, setScrolled] = useState(false);
         const [menuOpen, setMenuOpen] = useState(false);
         const [showContent, setShowContent] = useState(false);
@@ -264,9 +286,16 @@
                 {/* Menu de navegacion version de escritorio */}
                 <div className="hidden lg:flex items-center gap-4">
                   {paginas.map((pagina) => (
-                    <a key={pagina.title} href={pagina.route}>
+                    <span
+                      key={pagina.title}
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                        setPage(pagina.route);
+                      }}
+                      className="cursor-pointer"
+                    >
                       {pagina.title}
-                    </a>
+                    </span>
                   ))}
                 </div>
               </div>
@@ -300,7 +329,15 @@
                   </span>
                   <div className="p-5 w-full h-full flex flex-col gap-4">
                     {paginas.map((pagina) => (
-                      <span className="text-xl" key={pagina.title}>
+                      <span
+                        onClick={() => {
+                          window.scrollTo(0, 0);
+                          setPage(pagina.route);
+                          toggleMenu();
+                        }}
+                        className="text-xl cursor-pointer"
+                        key={pagina.title}
+                      >
                         {pagina.title}
                       </span>
                     ))}
@@ -312,7 +349,7 @@
         );
       }
 
-      function Hero({ assets }) {
+      function HeroRoot({ assets }) {
         return (
           <Section
             className={cn(
@@ -328,7 +365,11 @@
             <img
               src={assets.businessAcademyLogo}
               alt="Business Academy Logo"
-              className="h-auto lg:h-18 object-contain"
+              className={cn(
+                "object-contain",
+                "h-auto md:h-auto lg:h-18",
+                "w-auto md:w-[70%] lg:w-auto",
+              )}
             />
             <Text
               // variant="h4"
@@ -340,7 +381,11 @@
             <img
               src={assets.letsGrowith}
               alt="Lets Growith"
-              className="h-auto w-[85%] lg:h-10 lg:w-auto object-contain"
+              className={cn(
+                "object-contain",
+                "h-auto lg:h-10",
+                "w-[65%] md:w-[50%] lg:w-auto",
+              )}
             />
           </Section>
         );
@@ -447,7 +492,7 @@
         );
       }
 
-      function EspacioDeTrabajo({ drive, assets, period }) {
+      function EspacioDeTrabajo({ drive, assets, period, modality }) {
         return (
           <Section
             parentClass={"bgc-stone"}
@@ -456,7 +501,7 @@
               "gap-15 lg:gap-0",
             )}
           >
-            <div className="col-span-3 flex flex-col items-start gap-[1.5rem]">
+            <div className="col-span-3 flex flex-col items-center lg:items-start gap-[1.5rem]">
               <Text variant="h3" className="text-center lg:text-left">
                 {"Este es tu espacio de trabajo"}
               </Text>
@@ -474,16 +519,19 @@
               </Button>
             </div>
 
-            <div className="col-span-2 flex flex-col items-center justify-center gap-[1.5rem]">
-              <div className="text-center flex flex-col items-center justify-center gap-1">
+            <div className="col-span-2 flex flex-col items-center justify-center gap-5 lg:gap-[1.5rem]">
+              <div className="text-center flex flex-col items-center justify-center gap-2">
                 <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
                 <Text variant="h4" className={"font-bold tc-primary"}>
                   {period}
                 </Text>
+                <Text variant="h4" className={"font-bold tc-primary"}>
+                  {modality.toUpperCase()}
+                </Text>
               </div>
               {/* <Skeleton title="Calendario" h="30rem" /> */}
               <img
-                className="h-[30rem] object-contain"
+                className="w-full lg:w-auto h-auto lg:h-[30rem] object-contain"
                 src={assets.calendario}
                 alt="Calendario"
               />
@@ -506,11 +554,8 @@
             <Text variant="h2" className="col-span-2">
               {"Encuentra aqui tus implementaciones mas destacadas"}
             </Text>
-            <div className="col-span-3 w-full lg:w-auto">
-              <iframe
-                src={drive.impDestacadasURL}
-                className="w-full h-[20rem] bg-[#FFFFFF] rounded-md shadow-md border-4 border-gray-300"
-              ></iframe>
+            <div className="col-span-3 w-full lg:w-auto h-[25rem]">
+              <IFrame src={drive.impDestacadasURL} />
               {/* <Skeleton title="Implementacion 1" h="20rem" /> */}
             </div>
           </Section>
@@ -536,6 +581,71 @@
         );
       }
 
+      // -----------------------------------
+      // Componentes Material de Trabajo
+      // -----------------------------------
+      function HeroMT({ assets }) {
+        return (
+          <Section
+            className={cn(
+              "text-white text-center flex flex-col items-center justify-center",
+              `bg-cover bg-center h-[30rem]`,
+              "gap-4 lg:gap-4",
+            )}
+            style={{ backgroundImage: `url(${assets.heroBg})` }}
+          >
+            <Text
+              variant="h1"
+              className="font-light text-[3rem] lg:text-[4.5rem]"
+            >
+              {"Material de Trabajo"}
+            </Text>
+          </Section>
+        );
+      }
+
+      function MaterialDeTrabajo({ period, modality, drive }) {
+        return (
+          <Section
+            className={cn(
+              "text-center flex flex-col items-center justify-center",
+              "gap-5 lg:gap-10",
+              "py-17 lg:py-26",
+            )}
+          >
+            {/* Titulo y periodo */}
+            <div className="text-center flex flex-col items-center justify-center gap-3">
+              <Text variant="h3" className="font-light text-xl lg:text-4xl">
+                {"Encuentra aqui nuestros recursos de trabajo"}
+              </Text>
+              <Text variant="p" className="text-base lg:text-xl">
+                {"Periodo"}
+              </Text>
+              <Text
+                variant="p"
+                className="tc-primary font-bold italic text-base lg:text-3xl"
+              >
+                {`${period} - ${modality.toUpperCase()}`}
+              </Text>
+            </div>
+
+            {/* IFrame del material de trabajo */}
+            <div className="w-full h-[30rem]">
+              <IFrame src={drive.resourcesURL} />
+            </div>
+          </Section>
+        );
+      }
+
+      // ------------------------------
+      // Componentes reutilizables
+      // ------------------------------
+      // Text
+      // Button
+      // Section
+      // IFrame
+      // Skeleton
+      // ------------------------------
       function Text({
         variant = "p",
         children,
@@ -611,6 +721,19 @@
               {children}
             </div>
           </section>
+        );
+      }
+
+      function IFrame({ src, className }) {
+        return (
+          <iframe
+            src={src}
+            className={cn(
+              "w-full h-full",
+              "bg-[#FFFFFF] rounded-md shadow-md border-4 border-gray-300",
+              className,
+            )}
+          ></iframe>
         );
       }
 
