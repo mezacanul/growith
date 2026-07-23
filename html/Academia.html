@@ -515,7 +515,7 @@
               </div>
 
               <Button variant="primary" asLink={true} href={drive.impURL}>
-                {"Sube aqui tus implementaciones"}
+                {"Sube aquí tus implementaciones"}
               </Button>
             </div>
 
@@ -552,7 +552,7 @@
             )}
           >
             <Text variant="h2" className="col-span-2">
-              {"Encuentra aqui tus implementaciones mas destacadas"}
+              {"Encuentra aquí tus implementaciones más destacadas"}
             </Text>
             <div className="col-span-3 w-full lg:w-auto h-[25rem]">
               <IFrame src={drive.impDestacadasURL} />
@@ -569,14 +569,16 @@
             style={{ backgroundImage: `url(${assets.heroBg})` }}
           >
             <Text variant="h4" className={"text-center"}>
-              {"Mantente al tanto de nuestras reuniones"}
+              {"Mantente al tanto de las sesiones con tu Trainer"}
             </Text>
             <Text variant="h1" className="text-center font-bold italic mb-4">
-              {`Todos los ${meet.dayOfCall} a las ${meet.timeOfCall}`}
+              {`${toTitleCase(meet.dayOfCall)} a las ${meet.timeOfCall.toUpperCase()}`}
             </Text>
-            <Button variant="light" asLink={true} href={meet.meetURL}>
-              {"LLAMADA SEMANAL"}
-            </Button>
+            {meet.meetURL && (
+              <Button variant="light" asLink={true} href={meet.meetURL}>
+                {"REUNIÓN ONLINE"}
+              </Button>
+            )}
           </Section>
         );
       }
@@ -616,7 +618,7 @@
             {/* Titulo y periodo */}
             <div className="text-center flex flex-col items-center justify-center gap-3">
               <Text variant="h3" className="font-light text-xl lg:text-4xl">
-                {"Encuentra aqui nuestros recursos de trabajo"}
+                {"Encuentra aquí nuestros recursos de trabajo"}
               </Text>
               <Text variant="p" className="text-base lg:text-xl">
                 {"Periodo"}
@@ -753,6 +755,18 @@
         );
       }
 
+      // -----------------------------------
+      // Utilidades
+      // -----------------------------------
+      function toTitleCase(str) {
+        return str
+          .replace(/_/g, " ")
+          .replace(/\b\w/g, (char) => char.toUpperCase());
+      }
+
+      // -----------------------------------
+      // Render
+      // -----------------------------------
       ReactDOM.createRoot(document.getElementById("root")).render(
         <App data={window.GOOGLE_DATA} />,
       );
