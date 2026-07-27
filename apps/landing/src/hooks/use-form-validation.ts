@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-function validarCampo(campo: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+function validarCampo(
+  campo: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
+) {
   const contenedor = campo.closest(".campo");
   if (!contenedor) return true;
 
@@ -36,7 +38,7 @@ function validarFormulario(form: HTMLFormElement) {
 }
 
 /** --- 5. Validación básica de formularios --- */
-export function useFormValidation() {
+export function useFormValidation(googleScriptURL: string) {
   useEffect(() => {
     const formAplicacion = document.getElementById(
       "formAplicacion",
@@ -53,9 +55,24 @@ export function useFormValidation() {
       const values = [...formData.values()];
       console.log(values);
 
+      const guardarLead = async () => {
+        const response = await fetch(googleScriptURL, {
+          // mode: "cors", // Evita bloqueos de origen
+          headers: {
+            "Content-Type": "text/plain", // Buenas prácticas para evitar pre-flights complejos de CORS
+          },
+          method: "POST",
+          body: JSON.stringify(values),
+        });
+        const data = await response.json();
+        console.log("data", data);
+      };
+
+      guardarLead();
+
       /* [REEMPLAZAR] Conectar aquí con el CRM, correo o backend oficial */
       document.getElementById("formExito")?.classList.add("visible");
-      formAplicacion.reset();
+      // formAplicacion.reset();
     };
 
     const onInput = (e: Event) => {

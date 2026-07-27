@@ -1,3 +1,4 @@
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import type { LandingPageFooter } from "@/types/landing-page-data";
 
 export function Footer({ data }: { data: LandingPageFooter }) {
@@ -21,30 +22,29 @@ export function Footer({ data }: { data: LandingPageFooter }) {
             </p>
 
             <div className="redes">
-              <a href="#" aria-label="Instagram">
-                <span
-                  className="material-symbols-outlined"
-                  style={{ fontSize: "20px", color: "white" }}
-                >
-                  instagram_icon
-                </span>
+              <a
+                href={data.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <FaInstagram size={20} aria-hidden />
               </a>
-
-              <a href="#" aria-label="LinkedIn">
-                <span
-                  className="material-symbols-outlined"
-                  style={{ fontSize: "20px", color: "white" }}
-                >
-                  linkedin_icon
-                </span>
+              <a
+                href={data.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn size={20} aria-hidden />
               </a>
-              <a href="#" aria-label="Facebook">
-                <span
-                  className="material-symbols-outlined"
-                  style={{ fontSize: "20px", color: "white" }}
-                >
-                  facebook_icon
-                </span>
+              <a
+                href={data.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FaFacebookF size={20} aria-hidden />
               </a>
             </div>
           </div>

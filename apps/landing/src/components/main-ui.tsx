@@ -16,18 +16,20 @@ type MainProps = {
   assets: LandingPageAssets;
   testimoniales: LandingPageTestimoniales;
   proximaGeneracion: ProximaGeneracion;
+  googleScriptURL: string;
 };
 
 export default function MainUI({
   assets,
   testimoniales,
   proximaGeneracion,
+  googleScriptURL,
 }: MainProps) {
   useNavTransition();
   useMobileMenu();
   useRevealSections();
   useAccordions();
-  useFormValidation();
+  useFormValidation(googleScriptURL);
   // useBrochureModal();
 
   return (
