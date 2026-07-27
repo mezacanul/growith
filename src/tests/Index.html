@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form id="myForm">
+  <input name="firstName" placeholder="First name">
+  <input name="lastName" placeholder="Last name">
+  <input name="email" placeholder="Email">
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById('myForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const values = [...formData.values()];
+
+  google.script.run.saveFormData(values);
+});
+</script>
+</body>
+</html>

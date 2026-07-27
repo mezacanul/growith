@@ -1,0 +1,40 @@
+{
+  "testimoniales": {
+    "testim-1-nombre": "Nombre Apellido 1",
+    "testim-1-puesto": "Director General, Empresa",
+    "testim-1-resumen": "Mayor claridad directiva",
+    "testim-1-testimonio": "Antes del programa, muchas decisiones dependían completamente de mí. Hoy tenemos mayor claridad en prioridades, indicadores y responsabilidades.",
+    "testim-2-nombre": "Nombre Apellido 2",
+    "testim-2-puesto": "Socia Directora, Empresa",
+    "testim-2-resumen": "Equipo con mayor autonomía",
+    "testim-2-testimonio": "Pasamos de trabajar por urgencias a trabajar por prioridades. El equipo hoy sabe qué se espera de cada área y cómo se mide.",
+    "testim-3-nombre": "Nombre Apellido 3",
+    "testim-3-puesto": "Fundador, Empresa",
+    "testim-3-resumen": "Decisiones basadas en información",
+    "testim-3-testimonio": "Por primera vez entendimos a fondo los números del negocio. Eso cambió la forma en la que tomamos decisiones de crecimiento."
+  },
+  "proxima-generacion": {
+    "fecha-inicio": "Por confirmar",
+    "duracion": "9 meses · 15 sesiones",
+    "horario": "Por confirmar",
+    "modalidad": "Online o presencial",
+    "ciudad": "Por confirmar",
+    "inversion": "Solicitar información",
+    "opciones-pago": "Solicitar información",
+    "lugares-disponibles": "Cupo limitado por generación"
+  },
+  "footer": {
+    "instagram": "https://instagram.com",
+    "linkedin": "https://facebook.com",
+    "facebook": "https://linkedin.com",
+    "correo": "hola@growith.mx",
+    "telefono": "(000) 000 0000",
+    "ubicacion": "Merida, Yuc."
+  },
+  "assets": {
+    "clientesGrowith": "https://lh3.googleusercontent.com/d/1QaKtbCMhlIVQhL6nxN41Pkscz2frKN9d",
+    "luisCoach": "https://lh3.googleusercontent.com/d/1YvvbqwLh4DXHV3dNbM1ukefo-fVqGSQg",
+    "clientaGrowith": "https://lh3.googleusercontent.com/d/1DB8IbTHvrmtIqVK4otn7DrN70RSVoQ96",
+    "brochure": "https://drive.google.com/uc?id=10PbyH98CAtqaFHTbu_57Ahbd4roHqhzA&export=download"
+  }
+}
