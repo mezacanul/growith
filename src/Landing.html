@@ -104,7 +104,7 @@
         --text-night: #0d0f0e;
       }
       html {
-        font-family: var(--font-sans) !important;
+        font-family: var(--font-sans);
         color: var(--text-night);
         background-color: var(--text-off-white);
         scroll-behavior: smooth;
@@ -157,6 +157,7 @@
       }
 
       .material-symbols-outlined {
+        font-family: "Material Symbols Outlined";
         font-size: 30px;
       }
     </style>
@@ -2117,12 +2118,12 @@
       // ============================================================
       // SECCIÓN 2. CONTENIDO
       //============================================================
-      function Main() {
+      function Main({ assets, proximaGeneracion, testimoniales }) {
         return (
           <main id="inicio">
             {/* ============================================================
-      SECCIÓN 2. HERO
-      ============================================================ */}
+            SECCIÓN 2. HERO
+            ============================================================ */}
             <section className="hero" aria-labelledby="titulo-hero">
               <div className="contenedor">
                 <div className="hero-grid">
@@ -2147,12 +2148,20 @@
                       <a href="#aplicar" className="btn btn-primario">
                         Aplicar al programa
                       </a>
-                      <button
+                      <a
+                        href={assets.brochure}
+                        target="_blank"
                         className="btn btn-secundario"
                         data-abrir-brochure
                       >
                         Descargar brochure
-                      </button>
+                      </a>
+                      {/* <button
+                              className="btn btn-secundario"
+                              data-abrir-brochure
+                            >
+                              Descargar brochure
+                            </button> */}
                     </div>
                     <ul
                       className="hero-datos"
@@ -2173,17 +2182,17 @@
                       loading="eager"
                     />
                     {/* <figcaption className="hero-tarjeta">
-                  <strong>Deja de administrar un negocio.</strong>
-                  <span>Comienza a dirigir una empresa.</span>
-                </figcaption> */}
+                        <strong>Deja de administrar un negocio.</strong>
+                        <span>Comienza a dirigir una empresa.</span>
+                      </figcaption> */}
                   </figure>
                 </div>
               </div>
             </section>
 
             {/* ============================================================
-      SECCIÓN 2.5. QUIÉNES SOMOS (Propósito / Visión / Misión)
-      ============================================================ */}
+            SECCIÓN 2.5. QUIÉNES SOMOS (Propósito / Visión / Misión)
+            ============================================================ */}
             <section
               className="problema"
               id="quienes"
@@ -2226,8 +2235,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 3. IDENTIFICACIÓN DEL PROBLEMA
-      ============================================================ */}
+            SECCIÓN 3. IDENTIFICACIÓN DEL PROBLEMA
+            ============================================================ */}
             <section className="problema" aria-labelledby="titulo-problema">
               <div className="contenedor">
                 <div className="revelar">
@@ -2270,8 +2279,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 4. QUÉ ES BUSINESS GROWTH
-      ============================================================ */}
+            SECCIÓN 4. QUÉ ES BUSINESS GROWTH
+            ============================================================ */}
             <section id="programa" aria-labelledby="titulo-programa">
               <div className="contenedor">
                 <div className="que-es-grid">
@@ -2349,8 +2358,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 5. PARA QUIÉN ES
-      ============================================================ */}
+            SECCIÓN 5. PARA QUIÉN ES
+            ============================================================ */}
             <section
               className="problema"
               aria-labelledby="titulo-perfil"
@@ -2397,8 +2406,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 6. LA TRANSFORMACIÓN (Antes / Después)
-      ============================================================ */}
+            SECCIÓN 6. LA TRANSFORMACIÓN (Antes / Después)
+            ============================================================ */}
             <section
               className="transformacion"
               aria-labelledby="titulo-transformacion"
@@ -2447,8 +2456,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 7. LO QUE CONSTRUIRÁS
-      ============================================================ */}
+            SECCIÓN 7. LO QUE CONSTRUIRÁS
+            ============================================================ */}
             <section aria-labelledby="titulo-capacidades">
               <div className="contenedor">
                 <div className="centrado revelar">
@@ -2549,8 +2558,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 8. BUSINESS GROWTH ROADMAP (elemento firma: escalera)
-      ============================================================ */}
+            SECCIÓN 8. BUSINESS GROWTH ROADMAP (elemento firma: escalera)
+            ============================================================ */}
             <section className="roadmap" aria-labelledby="titulo-roadmap">
               <div className="contenedor">
                 <div className="revelar">
@@ -2635,8 +2644,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 9. CONTENIDO DE LAS 15 SESIONES (acordeón)
-      ============================================================ */}
+            SECCIÓN 9. CONTENIDO DE LAS 15 SESIONES (acordeón)
+            ============================================================ */}
             <section id="contenido" aria-labelledby="titulo-contenido">
               <div className="contenedor">
                 <div className="revelar">
@@ -2868,15 +2877,15 @@
                   </div>
                 </div>
                 {/* <p className="nota">
-                  El contenido puede adaptarse de acuerdo con la metodología
-                  oficial de Growith Business Academy.
-                </p> */}
+                        El contenido puede adaptarse de acuerdo con la metodología
+                        oficial de Growith Business Academy.
+                      </p> */}
               </div>
             </section>
 
             {/* ============================================================
-      SECCIÓN 9.5. TU COACH DE NEGOCIOS
-      ============================================================ */}
+            SECCIÓN 9.5. TU COACH DE NEGOCIOS
+            ============================================================ */}
             <section
               className="problema"
               id="coach"
@@ -2933,8 +2942,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 10. CÓMO FUNCIONA (metodología)
-      ============================================================ */}
+            SECCIÓN 10. CÓMO FUNCIONA (metodología)
+            ============================================================ */}
             <section
               className="metodologia"
               id="metodologia"
@@ -3019,8 +3028,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 10.5. ELIGE TU ESQUEMA (Online / Presencial)
-      ============================================================ */}
+            SECCIÓN 10.5. ELIGE TU ESQUEMA (Online / Presencial)
+            ============================================================ */}
             <section aria-labelledby="titulo-esquemas">
               <div className="contenedor">
                 <div className="centrado revelar">
@@ -3063,8 +3072,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 11. QUÉ INCLUYE
-      ============================================================ */}
+            SECCIÓN 11. QUÉ INCLUYE
+            ============================================================ */}
             <section aria-labelledby="titulo-incluye">
               <div className="contenedor">
                 <div className="revelar">
@@ -3104,8 +3113,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 12. EXPERIENCIA BUSINESS GROWTH
-      ============================================================ */}
+            SECCIÓN 12. EXPERIENCIA BUSINESS GROWTH
+            ============================================================ */}
             <section
               className="problema"
               id="experiencia"
@@ -3149,8 +3158,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 13. RESULTADOS ESPERADOS
-      ============================================================ */}
+            SECCIÓN 13. RESULTADOS ESPERADOS
+            ============================================================ */}
             <section className="resultados" aria-labelledby="titulo-resultados">
               <div className="contenedor">
                 <div className="revelar">
@@ -3180,10 +3189,10 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 14. TESTIMONIOS
-      [REEMPLAZAR] Todos los testimonios son contenido de ejemplo.
-      Sustituir por testimonios reales autorizados y fotografías oficiales.
-      ============================================================ */}
+            SECCIÓN 14. TESTIMONIOS
+            [REEMPLAZAR] Todos los testimonios son contenido de ejemplo.
+            Sustituir por testimonios reales autorizados y fotografías oficiales.
+            ============================================================ */}
             <section id="testimonios" aria-labelledby="titulo-testimonios">
               <div className="contenedor">
                 <div className="centrado revelar">
@@ -3192,68 +3201,64 @@
                     Empresarios que decidieron dirigir diferente.
                   </h2>
                   {/* <span className="aviso-ejemplo"
-                >Contenido de ejemplo — reemplazar por testimonios reales</span
-              > */}
+                      >Contenido de ejemplo — reemplazar por testimonios reales</span
+                    > */}
                 </div>
                 <div className="grid-testimonios revelar">
                   <article className="testimonio">
                     <blockquote>
-                      Antes del programa, muchas decisiones dependían
-                      completamente de mí. Hoy tenemos mayor claridad en
-                      prioridades, indicadores y responsabilidades.
+                      {testimoniales["testim-1-testimonio"]}
                     </blockquote>
-                    <span className="resultado">Mayor claridad directiva</span>
+                    <span className="resultado">
+                      {testimoniales["testim-1-resumen"]}
+                    </span>
                     <div className="testimonio-pie">
                       {/* [REEMPLAZAR] Fotografía real del participante */}
                       <img
-                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"
+                        // src={assets.testimoniales["testim-1-foto"] ?? null}
                         alt="Fotografía de participante (contenido de ejemplo)"
                       />
                       <div>
-                        <strong>Nombre Apellido</strong>
-                        <span>Director General, Empresa</span>
+                        <strong>{testimoniales["testim-1-nombre"]}</strong>
+                        <span>{testimoniales["testim-1-puesto"]}</span>
                       </div>
                     </div>
                   </article>
                   <article className="testimonio">
                     <blockquote>
-                      Pasamos de trabajar por urgencias a trabajar por
-                      prioridades. El equipo hoy sabe qué se espera de cada área
-                      y cómo se mide.
+                      {testimoniales["testim-2-testimonio"]}
                     </blockquote>
                     <span className="resultado">
-                      Equipo con mayor autonomía
+                      {testimoniales["testim-2-resumen"]}
                     </span>
                     <div className="testimonio-pie">
                       {/* [REEMPLAZAR] Fotografía real del participante */}
                       <img
-                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"
+                        // src={assets.testimoniales["testim-2-foto"] ?? null}
                         alt="Fotografía de participante (contenido de ejemplo)"
                       />
                       <div>
-                        <strong>Nombre Apellido</strong>
-                        <span>Socia Directora, Empresa</span>
+                        <strong>{testimoniales["testim-2-nombre"]}</strong>
+                        <span>{testimoniales["testim-2-puesto"]}</span>
                       </div>
                     </div>
                   </article>
                   <article className="testimonio">
                     <blockquote>
-                      Por primera vez entendimos a fondo los números del
-                      negocio. Eso cambió la forma en la que tomamos decisiones
-                      de crecimiento.
+                      {testimoniales["testim-3-testimonio"]}
                     </blockquote>
                     <span className="resultado">
-                      Decisiones basadas en información
+                      {testimoniales["testim-3-resumen"]}
                     </span>
                     <div className="testimonio-pie">
                       {/* [REEMPLAZAR] Fotografía real del participante */}
                       <img
-                        src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80"
+                        // src={assets.testimoniales["testim-3-foto"] ?? null}
                         alt="Fotografía de participante (contenido de ejemplo)"
                       />
                       <div>
-                        <strong>Nombre Apellido</strong>
-                        <span>Fundador, Empresa</span>
+                        <strong>{testimoniales["testim-3-nombre"]}</strong>
+                        <span>{testimoniales["testim-3-puesto"]}</span>
                       </div>
                     </div>
                   </article>
@@ -3267,8 +3272,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 15. BUSINESS GROWTH ALUMNI
-      ============================================================ */}
+            SECCIÓN 15. BUSINESS GROWTH ALUMNI
+            ============================================================ */}
             <section className="alumni" aria-labelledby="titulo-alumni">
               <div className="contenedor">
                 <div className="revelar">
@@ -3298,9 +3303,9 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 16. PRÓXIMA GENERACIÓN
-      [REEMPLAZAR] Placeholders con la información final de la generación.
-      ============================================================ */}
+            SECCIÓN 16. PRÓXIMA GENERACIÓN
+            [REEMPLAZAR] Placeholders con la información final de la generación.
+            ============================================================ */}
             <section aria-labelledby="titulo-generacion">
               <div className="contenedor">
                 <div className="centrado revelar">
@@ -3319,36 +3324,46 @@
                   <dl className="grid-datos">
                     <div className="dato">
                       <dt>Fecha de inicio</dt>
-                      <dd className="placeholder">Por confirmar</dd>
+                      <dd className="placeholder">
+                        {proximaGeneracion["fecha-inicio"]}
+                      </dd>
                     </div>
                     <div className="dato">
                       <dt>Duración</dt>
-                      <dd>9 meses · 15 sesiones</dd>
+                      <dd>{proximaGeneracion["duracion"]}</dd>
                     </div>
                     <div className="dato">
                       <dt>Horario</dt>
-                      <dd className="placeholder">Por confirmar</dd>
+                      <dd className="placeholder">
+                        {proximaGeneracion["horario"]}
+                      </dd>
                     </div>
                     <div className="dato">
                       <dt>Modalidad</dt>
-                      <dd>Online o presencial</dd>
+                      <dd>{proximaGeneracion["modalidad"]}</dd>
                     </div>
                     <div className="dato">
                       <dt>Ciudad</dt>
-                      <dd className="placeholder">Por confirmar</dd>
+                      <dd className="placeholder">
+                        {proximaGeneracion["ciudad"]}
+                      </dd>
                     </div>
                     <div className="dato">
                       <dt>Inversión</dt>
-                      <dd className="placeholder">Solicitar información</dd>
+                      <dd className="placeholder">
+                        {proximaGeneracion["inversion"]}
+                      </dd>
                     </div>
                     <div className="dato">
                       <dt>Opciones de pago</dt>
-                      <dd className="placeholder">Solicitar información</dd>
+                      <dd className="placeholder">
+                        {proximaGeneracion["opciones-pago"]}
+                      </dd>
                     </div>
                     <div className="dato">
                       <dt>Lugares disponibles</dt>
                       <dd className="placeholder">
-                        Cupo limitado por generación
+                        {proximaGeneracion["lugares-disponibles"]}
                       </dd>
                     </div>
                   </dl>
@@ -3369,8 +3384,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 17. PROCESO DE APLICACIÓN + FORMULARIO
-      ============================================================ */}
+            SECCIÓN 17. PROCESO DE APLICACIÓN + FORMULARIO
+            ============================================================ */}
             <section
               className="aplicacion"
               id="aplicar"
@@ -3583,8 +3598,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 18. PREGUNTAS FRECUENTES
-      ============================================================ */}
+            SECCIÓN 18. PREGUNTAS FRECUENTES
+            ============================================================ */}
             <section id="faq" aria-labelledby="titulo-faq">
               <div className="contenedor">
                 <div className="centrado revelar">
@@ -3677,7 +3692,7 @@
                         director. Las condiciones específicas se confirman
                         durante el proceso de aplicación.
                         {/* [Placeholder: definir política oficial de
-                    acompañantes.] */}
+                          acompañantes.] */}
                       </p>
                     </div>
                   </div>
@@ -3692,7 +3707,7 @@
                         de reposición o recuperación se explican durante el
                         proceso de inscripción.
                         {/* [Placeholder: definir política oficial de
-                    asistencia.] */}
+                          asistencia.] */}
                       </p>
                     </div>
                   </div>
@@ -3819,8 +3834,8 @@
             </section>
 
             {/* ============================================================
-      SECCIÓN 19. CTA FINAL
-      ============================================================ */}
+            SECCIÓN 19. CTA FINAL
+            ============================================================ */}
             <section className="cta-final" aria-labelledby="titulo-cta">
               <div className="contenedor">
                 <span className="marca-sup">Growith Business Academy</span>
@@ -3837,9 +3852,17 @@
                   <a href="#aplicar" className="btn btn-primario">
                     Aplicar al programa
                   </a>
-                  <button className="btn btn-borde-claro" data-abrir-brochure>
+                  {/* <button className="btn btn-borde-claro" data-abrir-brochure>
+                          Descargar brochure
+                        </button> */}
+                  <a
+                    href={assets.brochure}
+                    target="_blank"
+                    className="btn btn-borde-claro"
+                    data-abrir-brochure
+                  >
                     Descargar brochure
-                  </button>
+                  </a>
                 </div>
                 <p className="cierre">
                   Crece con estrategia. Lidera con claridad. Construye una
@@ -3854,7 +3877,7 @@
       // ============================================================
       // SECCIÓN 20. FOOTER
       // ============================================================
-      function Footer() {
+      function Footer({ data }) {
         return (
           <footer className="footer">
             <div className="contenedor">
@@ -3874,10 +3897,35 @@
                     tener negocios rentables y estructurados.
                   </p>
 
-                  {/* ============================================================
-              ======== TODO: Redes sociales =================================
-              ============================================================ */}
+                  <div className="redes">
+                    <a href="#" aria-label="Instagram">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "20px", color: "white" }}
+                      >
+                        instagram_icon
+                      </span>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "20px", color: "white" }}
+                      >
+                        linkedin_icon
+                      </span>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                      <span
+                        className="material-symbols-outlined"
+                        style={{ fontSize: "20px", color: "white" }}
+                      >
+                        facebook_icon
+                      </span>
+                    </a>
+                  </div>
                 </div>
+
                 <div>
                   <h4>Programa</h4>
                   <ul>
@@ -3916,9 +3964,9 @@
                   <h4>Contacto</h4>
                   <ul className="contacto">
                     {/* [REEMPLAZAR] Datos de contacto oficiales */}
-                    <li>correo@growith.mx</li>
-                    <li>+52 (000) 000 0000</li>
-                    <li>Ciudad, México</li>
+                    <li>{data.correo}</li>
+                    <li>{data.telefono}</li>
+                    <li>{data.ubicacion}</li>
                   </ul>
                   <a href="#aplicar" className="btn btn-primario">
                     Solicitar información
@@ -3927,8 +3975,8 @@
               </div>
               <div className="footer-legal">
                 <span>
-                  © 2026 Growith Business Academy. Todos los derechos
-                  reservados.
+                  © {new Date().getFullYear()} Growith Business Academy. Todos
+                  los derechos reservados.
                 </span>
                 <span>
                   Business Growth — Programa de crecimiento y profesionalización
@@ -3995,6 +4043,7 @@
       ============================================================ -->
     <script type="text/babel">
       window.addEventListener("ready", function () {
+        // return
         console.log("App is ready");
 
         /***********************/
@@ -4129,6 +4178,21 @@
           e.preventDefault();
           if (validarFormulario(formAplicacion)) {
             /* [REEMPLAZAR] Conectar aquí con el CRM, correo o backend oficial */
+
+            const formData = new FormData(e.currentTarget);
+            const values = [...formData.values()];
+            console.log(values);
+
+            // return
+            guardarLead(
+              values,
+              function () {
+                console.log("Lead guardado");
+              },
+              function () {
+                console.log("Error al guardar lead");
+              },
+            );
             document.getElementById("formExito").classList.add("visible");
             formAplicacion.reset();
           }
@@ -4141,42 +4205,42 @@
         });
 
         /* --- 6. Modal de brochure --- */
-        var modal = document.getElementById("modalBrochure");
-        document
-          .querySelectorAll("[data-abrir-brochure]")
-          .forEach(function (btn) {
-            btn.addEventListener("click", function () {
-              modal.classList.add("visible");
-              document.getElementById("b-nombre").focus();
-            });
-          });
-        function cerrarModal() {
-          modal.classList.remove("visible");
-        }
-        document
-          .querySelectorAll("[data-cerrar-modal]")
-          .forEach(function (btn) {
-            btn.addEventListener("click", cerrarModal);
-          });
-        modal.addEventListener("click", function (e) {
-          if (e.target === modal) cerrarModal();
-        });
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") cerrarModal();
-        });
+        // var modal = document.getElementById("modalBrochure");
+        // document
+        //   .querySelectorAll("[data-abrir-brochure]")
+        //   .forEach(function (btn) {
+        //     btn.addEventListener("click", function () {
+        //       modal.classList.add("visible");
+        //       document.getElementById("b-nombre").focus();
+        //     });
+        //   });
+        // function cerrarModal() {
+        //   modal.classList.remove("visible");
+        // }
+        // document
+        //   .querySelectorAll("[data-cerrar-modal]")
+        //   .forEach(function (btn) {
+        //     btn.addEventListener("click", cerrarModal);
+        //   });
+        // modal.addEventListener("click", function (e) {
+        //   if (e.target === modal) cerrarModal();
+        // });
+        // document.addEventListener("keydown", function (e) {
+        //   if (e.key === "Escape") cerrarModal();
+        // });
 
-        var formBrochure = document.getElementById("formBrochure");
-        formBrochure.addEventListener("submit", function (e) {
-          e.preventDefault();
-          if (validarFormulario(formBrochure)) {
-            /* [REEMPLAZAR] Conectar con el envío real del brochure (PDF oficial) */
-            document.getElementById("brochureExito").classList.add("visible");
-          }
-        });
-        formBrochure.addEventListener("input", function (e) {
-          var contenedor = e.target.closest(".campo");
-          if (contenedor) contenedor.classList.remove("invalido");
-        });
+        // var formBrochure = document.getElementById("formBrochure");
+        // formBrochure.addEventListener("submit", function (e) {
+        //   e.preventDefault();
+        //   if (validarFormulario(formBrochure)) {
+        //     /* [REEMPLAZAR] Conectar con el envío real del brochure (PDF oficial) */
+        //     document.getElementById("brochureExito").classList.add("visible");
+        //   }
+        // });
+        // formBrochure.addEventListener("input", function (e) {
+        //   var contenedor = e.target.closest(".campo");
+        //   if (contenedor) contenedor.classList.remove("invalido");
+        // });
       });
     </script>
     <!-- ============================================================
