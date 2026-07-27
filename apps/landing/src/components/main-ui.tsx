@@ -812,7 +812,8 @@ export default function MainUI({
                 src={assets.luisCoach}
                 alt="Luis Arredondo, coach de negocios"
                 loading="lazy"
-                className="coach-img"
+                //className="coach-img"
+                className="h-auto w-full"
               />
             </figure>
             <div className="revelar">
