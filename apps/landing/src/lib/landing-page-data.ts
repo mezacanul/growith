@@ -4,7 +4,7 @@ import { cache } from "react";
 import type { LandingPageData } from "@/types/landing-page-data";
 
 const googleScriptURL = process.env.GOOGLE_SCRIPT_URL as string;
-console.log("googleScriptURL", googleScriptURL);
+// console.log("googleScriptURL", googleScriptURL);
 
 export const getLandingPageData = cache(async (): Promise<LandingPageData> => {
   const filePath = path.join(process.cwd(), "public", "landing_page_data.json");
@@ -12,9 +12,9 @@ export const getLandingPageData = cache(async (): Promise<LandingPageData> => {
 
   try {
     const response = await fetch(googleScriptURL);
-    console.log("response", response);
+    // console.log("response", response);
     const data = await response.json();
-    console.log("data", data);
+    // console.log("data", data);
     return data as LandingPageData;
   } catch (error) {
     console.error("error", error);

@@ -3,7 +3,7 @@ export function Header() {
     <header className="nav" id="nav">
       <div className="nav-inner">
         <a
-          href="#inicio"
+          href="/"
           className="logo"
           aria-label="Growith Business Academy - Inicio"
         >
@@ -15,13 +15,18 @@ export function Header() {
           id="navLinks"
           aria-label="Navegación principal"
         >
-          <a href="#programa">Programa</a>
+          {/* <a href="#programa">Programa</a>
           <a href="#contenido">Contenido</a>
           <a href="#coach">Tu coach</a>
           <a href="#experiencia">Experiencia</a>
           <a href="#testimonios">Testimonios</a>
-          <a href="#faq">Preguntas frecuentes</a>
-          <a href="#aplicar" className="btn btn-primario">
+          <a href="#faq">Preguntas frecuentes</a> */}
+          <a href="/">Inicio</a>
+          <a href="/acerca-del-programa">Acerca del programa</a>
+          <a href="/contenido">Contenido</a>
+          <a href="/esquemas">Esquemas</a>
+          <a href="/testimonios">Testimonios</a>
+          <a href="/#aplicar" className="btn btn-primario">
             Aplicar ahora
           </a>
         </nav>

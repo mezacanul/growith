@@ -8,7 +8,7 @@ export function Footer({ data }: { data: LandingPageFooter }) {
         <div className="footer-grid">
           <div>
             <a
-              href="#inicio"
+              href="/"
               className="logo"
               aria-label="Growith Business Academy - Inicio"
             >
@@ -53,19 +53,19 @@ export function Footer({ data }: { data: LandingPageFooter }) {
             <h4>Programa</h4>
             <ul>
               <li>
-                <a href="#programa">Qué es Business Growth</a>
+                <a href="/acerca-del-programa">Acerca del programa</a>
               </li>
               <li>
-                <a href="#metodologia">Metodología</a>
+                <a href="/contenido">Contenido</a>
               </li>
               <li>
-                <a href="#contenido">Contenido</a>
+                <a href="/esquemas">Esquemas</a>
               </li>
               <li>
-                <a href="#experiencia">Experiencia</a>
+                <a href="/testimonios">Testimonios</a>
               </li>
               <li>
-                <a href="#faq">Preguntas frecuentes</a>
+                <a href="/#faq">Preguntas frecuentes</a>
               </li>
             </ul>
           </div>
@@ -91,7 +91,7 @@ export function Footer({ data }: { data: LandingPageFooter }) {
               <li>{data.telefono}</li>
               <li>{data.ubicacion}</li>
             </ul>
-            <a href="#aplicar" className="btn btn-primario">
+            <a href="/#aplicar" className="btn btn-primario">
               Solicitar información
             </a>
           </div>

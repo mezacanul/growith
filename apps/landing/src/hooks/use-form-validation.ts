@@ -66,13 +66,13 @@ export function useFormValidation(googleScriptURL: string) {
         });
         const data = await response.json();
         console.log("data", data);
+        document.getElementById("formExito")?.classList.add("visible");
+        formAplicacion.reset();
       };
 
       guardarLead();
 
       /* [REEMPLAZAR] Conectar aquí con el CRM, correo o backend oficial */
-      document.getElementById("formExito")?.classList.add("visible");
-      // formAplicacion.reset();
     };
 
     const onInput = (e: Event) => {

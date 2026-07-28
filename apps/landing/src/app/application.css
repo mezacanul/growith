@@ -522,7 +522,7 @@ h2 {
 /* ============================================================
    5. PROBLEMA
    ============================================================ */
-.problema {
+.secondary-bg {
   background: var(--gris-100);
 }
 .grid-retos {
@@ -1068,7 +1068,7 @@ h2 {
    15. RESULTADOS
    ============================================================ */
 .resultados {
-  background: var(--gris-100);
+  /* background: var(--gris-100); */
 }
 .grid-resultados {
   display: grid;
@@ -1880,4 +1880,3 @@ h2 {
     width: auto;
   }
 }
-    </style>
