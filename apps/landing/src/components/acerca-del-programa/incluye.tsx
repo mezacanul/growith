@@ -12,9 +12,9 @@ export default function Incluye() {
           </h2>
         </div>
         <div className="grid-incluye revelar">
-          <div className="incluye">
+          {/* <div className="incluye">
             1 sesión individual personalizada con tu ActionCOACH
-          </div>
+          </div> */}
           <div className="incluye">
             Seguimientos personalizados con tu trainer
           </div>

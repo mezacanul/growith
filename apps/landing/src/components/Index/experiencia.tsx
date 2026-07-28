@@ -18,6 +18,7 @@ export default function Experiencia({ assets }: { assets: LandingPageAssets }) {
               src={assets.clientesGrowith}
               alt="Grupo de empresarios trabajando en una sesión ejecutiva de Business Growth"
               loading="lazy"
+              referrerPolicy="no-referrer"
               className="experiencia-img"
             />
           </figure>

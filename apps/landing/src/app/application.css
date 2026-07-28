@@ -943,7 +943,7 @@ h2 {
   transition: max-height 0.35s ease;
 }
 .sesion-contenido p {
-  padding: 0 8px 26px 68px;
+  padding: 20px 8px 26px 68px;
   color: var(--texto-suave);
   font-size: 0.95rem;
   max-width: 70ch;

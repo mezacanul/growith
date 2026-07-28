@@ -15,7 +15,7 @@ export default async function TestimoniosPage() {
   return (
     <LandingEffects>
       <main id="inicio">
-        <Testimonios testimoniales={data.testimoniales} />
+        <Testimonios testimoniales={data.testimoniales} assets={data.assets} />
       </main>
     </LandingEffects>
   );

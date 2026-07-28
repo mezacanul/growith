@@ -52,6 +52,7 @@ export default function Hero({ assets }: { assets: LandingPageAssets }) {
               src={assets.clientaGrowith}
               alt="Empresaria dirigiendo una reunión estratégica con su equipo directivo"
               loading="eager"
+              referrerPolicy="no-referrer"
             />
             {/* <figcaption className="hero-tarjeta">
                   <strong>Deja de administrar un negocio.</strong>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Roadmap() {
   return (
     // ============================================================
@@ -79,9 +81,9 @@ export default function Roadmap() {
           </article>
         </div>
         <div className="cta-inline revelar">
-          <a href="#aplicar" className="btn btn-primario">
+          <Link href="/#aplicar" className="btn btn-primario">
             Aplicar al programa
-          </a>
+          </Link>
         </div>
       </div>
     </section>

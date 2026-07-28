@@ -18,6 +18,7 @@ export default function Coach({ assets }: { assets: LandingPageAssets }) {
               src={assets.luisCoach}
               alt="Luis Arredondo, coach de negocios"
               loading="lazy"
+              referrerPolicy="no-referrer"
               //className="coach-img"
               className="h-auto w-full"
             />

@@ -227,8 +227,8 @@ export default function Faq() {
             <div className="faq-contenido">
               <p>
                 Existen distintas opciones de pago que se explican
-                durante el proceso de aplicación. [Placeholder: definir
-                esquemas de pago oficiales.]
+                durante el proceso de aplicación. 
+                {/* [Placeholder: definir esquemas de pago oficiales.] */}
               </p>
             </div>
           </div>

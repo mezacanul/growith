@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Transformacion() {
   return (
     // ============================================================
@@ -43,9 +45,9 @@ export default function Transformacion() {
           </div>
         </div>
         <div className="cta-inline revelar">
-          <a href="#aplicar" className="btn btn-claro">
+          <Link href="/#aplicar" className="btn btn-claro">
             Aplicar al programa
-          </a>
+          </Link>
         </div>
       </div>
     </section>

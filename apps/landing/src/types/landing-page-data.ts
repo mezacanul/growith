@@ -3,6 +3,9 @@ export interface LandingPageAssets {
   luisCoach: string;
   clientaGrowith: string;
   brochure: string;
+  testim1: string;
+  testim2: string;
+  testim3: string;
 }
 
 export interface LandingPageTestimoniales {
