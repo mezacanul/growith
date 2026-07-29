@@ -1,0 +1,85 @@
+:root {
+  --font-sans: "Montserrat", sans-serif;
+
+  --text-off-white: #f2f1ef;
+  --text-stone: #e1e1db;
+  --text-forest-green: #396743;
+  --text-dark-green: #1f3a26;
+  --text-night: #0d0f0e;
+}
+
+html {
+  font-family: var(--font-sans) !important;
+  color: var(--text-night);
+  background-color: var(--text-off-white);
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.text-white {
+  color: var(--text-off-white);
+}
+
+.bg-white {
+  background-color: var(--text-off-white);
+}
+
+.tc-primary {
+  color: var(--text-forest-green);
+}
+
+.tc-white {
+  color: var(--text-off-white);
+}
+
+.tc-stone {
+  color: var(--text-stone);
+}
+
+.tc-forest-green {
+  color: var(--text-forest-green);
+}
+
+.tc-dark-green {
+  color: var(--text-dark-green);
+}
+
+.tc-night {
+  color: var(--text-night);
+}
+
+.bgc-primary {
+  background-color: var(--text-forest-green);
+}
+
+.bgc-white {
+  background-color: var(--text-off-white);
+}
+
+.bgc-stone {
+  background-color: var(--text-stone);
+}
+
+.bgc-forest-green {
+  background-color: var(--text-forest-green);
+}
+
+.bgc-dark-green {
+  background-color: var(--text-dark-green);
+}
+
+.bgc-night {
+  background-color: var(--text-night);
+}
+
+.material-symbols-outlined {
+  font-size: 30px;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
