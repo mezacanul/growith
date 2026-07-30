@@ -1,0 +1,13 @@
+{
+  "name": "growith",
+  "private": true,
+  "packageManager": "pnpm@11.12.0",
+  "scripts": {
+    "dev:landing": "pnpm --filter landing dev",
+    "dev:academia": "pnpm --filter academia dev",
+    "build:landing": "pnpm --filter landing build",
+    "build:academia": "pnpm --filter academia build",
+    "lint:landing": "pnpm --filter landing lint",
+    "lint:academia": "pnpm --filter academia lint"
+  }
+}
