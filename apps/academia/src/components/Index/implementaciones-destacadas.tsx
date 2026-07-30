@@ -9,8 +9,8 @@ export function ImplementacionesDestacadas({
   drive,
 }: ImplementacionesDestacadasProps) {
   return (
-    <section className="secondary-bg">
-      <div className="contenedor acad-feature-grid revelar">
+    <section className="bg-[#eceae6]">
+      <div className="contenedor revelar grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <span className="eyebrow">Destacadas</span>
           <h2>Encuentra aquí tus implementaciones más destacadas</h2>
@@ -19,7 +19,7 @@ export function ImplementacionesDestacadas({
             con claridad.
           </p>
         </div>
-        <div className="acad-frame">
+        <div className="min-h-[25rem] overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
           <IFrame src={drive.impDestacadasURL} className="h-[25rem]" />
         </div>
       </div>
