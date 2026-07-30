@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "./application.css";
+
+@theme {
+  --font-sans: var(--font-montserrat), "Montserrat", sans-serif;
+
+  --color-off-white: #f2f1ef;
+  --color-stone: #e1e1db;
+  --color-forest-green: #396743;
+  --color-dark-green: #1f3a26;
+  --color-night: #0d0f0e;
+  --color-primary: #396743;
+}

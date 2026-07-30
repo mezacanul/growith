@@ -1,0 +1,31 @@
+{
+  "period": "MARZO 2026",
+  "modality": "presencial",
+  "assets": {
+    "heroBg": "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/hero-bg.png",
+    "growithLogo": "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-growith.png",
+    "businessAcademyLogo": "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-business-academy.png",
+    "letsGrowith": "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/lets-growith.png",
+    "clientLogo": "https://lh3.googleusercontent.com/d/1jvzPPHIIBIIoIsaGzj52zlnzaTYkGdJ9",
+    "calendario": "https://lh3.googleusercontent.com/d/1vXt_NuB1mwlpH6DopqwxC4PhHJ82yS2r"
+  },
+  "evento": {
+    "fecha": "30 de Julio",
+    "hora": "10:00 AM",
+    "url": "https://www.google.com",
+    "textoBtn": "Contactanos",
+    "textoIzq": "Suscribete a nuestro proximo evento",
+    "titulo": "Evento de academia en Growith - Presencial (Merida, Yucatan)",
+    "descripcion": "Este es un evento publico realizado por Growith, donde se impartiran conocimientos basicos para el crecimiento de tu negocio."
+  },
+  "drive": {
+    "impURL": "https://drive.google.com/embeddedfolderview?id=12Rd5E0SLKetEJb_Vz4DQV28VICtxjIx6#grid",
+    "impDestacadasURL": "https://drive.google.com/embeddedfolderview?id=1mMqB-DejHbMszssW36U7Gx1qbTCyMt6q#grid",
+    "resourcesURL": "https://drive.google.com/embeddedfolderview?id=1O2yklXNRRkBleM7ngubKLaxzXX59_tQ5#grid"
+  },
+  "meet": {
+    "meetURL": "https://meet.google.com/pqp-xmcc-czi",
+    "dayOfCall": "viernes",
+    "timeOfCall": "10:00 am"
+  }
+}
