@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HeroMT } from "@/components/material-de-trabajo/hero";
 import { MaterialDeTrabajo } from "@/components/material-de-trabajo/material-de-trabajo";
+import { AcademiaEffects } from "@/components/shared/academia-effects";
 import { getAcademiaPageData } from "@/lib/academia-page-data";
 
 export const metadata: Metadata = {
@@ -13,13 +14,15 @@ export default async function MaterialDeTrabajoPage() {
   const data = await getAcademiaPageData();
 
   return (
-    <main>
-      <HeroMT assets={data.assets} />
-      <MaterialDeTrabajo
-        period={data.period}
-        modality={data.modality}
-        drive={data.drive}
-      />
-    </main>
+    <AcademiaEffects>
+      <main>
+        <HeroMT assets={data.assets} />
+        <MaterialDeTrabajo
+          period={data.period}
+          modality={data.modality}
+          drive={data.drive}
+        />
+      </main>
+    </AcademiaEffects>
   );
 }

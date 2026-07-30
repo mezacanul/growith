@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { getAcademiaPageData } from "@/lib/academia-page-data";
 import "./globals.css";
@@ -7,6 +7,12 @@ import "./globals.css";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -24,14 +30,17 @@ export default async function RootLayout({
   const data = await getAcademiaPageData();
 
   return (
-    <html lang="es" className={`${montserrat.variable} h-full antialiased`}>
+    <html
+      lang="es"
+      className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
+    >
       <head>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bgc-white">
+      <body className="min-h-full flex flex-col font-sans">
         <Header assets={data.assets} />
         {children}
       </body>

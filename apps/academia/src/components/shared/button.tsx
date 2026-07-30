@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 const variantMap = {
-  primary: "bgc-primary tc-white",
-  light: "bgc-white tc-primary",
-  dark: "bgc-night tc-white",
+  primary: "btn btn-primario",
+  light: "btn btn-claro",
+  dark: "btn btn-borde-claro",
 } as const;
 
 type ButtonVariant = keyof typeof variantMap;
@@ -26,30 +26,18 @@ export function Button({
   href = "",
   target = "_blank",
 }: ButtonProps) {
-  const props = {
-    className: cn(
-      variantMap[variant],
-      "rounded-sm py-2 px-5 text-center",
-      "text-base font-bold",
-      "transition-all duration-300",
-      "hover:scale-105",
-      "uppercase",
-      "shadow-sm",
-      "hover:cursor-pointer",
-      className,
-    ),
-  };
+  const classes = cn(variantMap[variant], className);
 
   if (asLink) {
     return (
-      <a target={target} href={href} rel="noopener noreferrer" {...props}>
+      <a target={target} href={href} rel="noopener noreferrer" className={classes}>
         {children}
       </a>
     );
   }
 
   return (
-    <button type="button" {...props}>
+    <button type="button" className={classes}>
       {children}
     </button>
   );

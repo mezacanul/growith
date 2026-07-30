@@ -10,11 +10,7 @@ export function IFrame({ src, className }: IFrameProps) {
     <iframe
       src={src}
       title="Drive embed"
-      className={cn(
-        "w-full h-full",
-        "bg-[#FFFFFF] rounded-md shadow-md border-4 border-gray-300",
-        className,
-      )}
+      className={cn("w-full h-full border-0", className)}
     />
   );
 }

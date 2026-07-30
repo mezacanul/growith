@@ -1,7 +1,3 @@
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/shared/button";
-import { Section } from "@/components/shared/section";
-import { Text } from "@/components/shared/text";
 import type {
   AcademiaDrive,
   AcademiaPageAssets,
@@ -22,65 +18,51 @@ export function EspacioDeTrabajo({
   modality,
 }: EspacioDeTrabajoProps) {
   return (
-    <Section parentClass="bgc-stone" className="py-[6rem]">
-      {/* Bloque de titulo y logo */}
-      <div className="flex flex-col items-center justify-center gap-10">
-        {/* <Text variant="h3" className="text-center">
-          Bienvenido a Business Academy
-        </Text> */}
-        <Text variant="h1" className="text-center">
-          Este es tu espacio de trabajo
-        </Text>
-        <div className="w-full lg:w-[30rem] h-[10rem]">
+    <section>
+      <div className="contenedor centrado revelar">
+        <span className="eyebrow">Tu espacio</span>
+        <h2 className="max-w-none">Este es tu espacio de trabajo</h2>
+        <p className="intro-seccion">
+          Sube implementaciones, consulta tu calendario y mantén tu avance
+          visible para el equipo Growith.
+        </p>
+
+        <div className="acad-logo-box max-w-xl mx-auto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={assets.clientLogo}
-            className="object-contain w-full h-full"
-            alt="Logo"
+            className="object-contain w-full h-[8rem] mx-auto"
+            alt="Logo del cliente"
           />
         </div>
-      </div>
 
-      {/* Bloque de calendario e implementaciones */}
-      <div
-        className={cn(
-          "flex flex-col lg:grid grid-cols-2 justify-between items-center ",
-          "gap-15 lg:gap-0",
-          "mt-20",
-        )}
-      >
-        <div className="flex flex-col items-center gap-[1.5rem]">
-          <Text variant="h3" className="text-center w-[70%] margin-auto">
-            {
-              "Accede a tu carpeta personal para poder subir tus implementaciones aquí"
-            }
-          </Text>
-          <IFrame src={drive.impURL} className="h-[25rem]" />
-          {/* <Button variant="primary" asLink href={drive.impURL}>
-          Sube aquí tus implementaciones
-        </Button> */}
-        </div>
-
-        <div className="flex flex-col items-center justify-center gap-5 lg:gap-[1.5rem]">
-          <div className="text-center flex flex-col items-center justify-center gap-2">
-            <Text variant="h4">CALENDARIO BUSINESS ACADEMY</Text>
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-2">
-              <Text variant="h4" className="font-bold tc-primary">
-                {period}
-              </Text>
-              <Text variant="h4" className="font-bold tc-primary">
-                {modality.toUpperCase()}
-              </Text>
+        <div className="acad-grid-dos">
+          <article className="acad-panel text-left">
+            <span className="eyebrow">Implementaciones</span>
+            <h3 className="text-xl mb-3">Carpeta personal</h3>
+            <p className="intro-seccion mt-0 mb-4">
+              Accede a tu carpeta personal para subir tus implementaciones aquí.
+            </p>
+            <div className="acad-frame">
+              <IFrame src={drive.impURL} className="h-[25rem]" />
             </div>
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="w-full lg:w-auto h-auto lg:h-[30rem] object-contain"
-            src={assets.calendario}
-            alt="Calendario"
-          />
+          </article>
+
+          <article className="acad-panel text-left">
+            <span className="eyebrow">Calendario</span>
+            <h3 className="text-xl mb-2">Business Academy</h3>
+            <p className="font-bold tc-primary text-lg">
+              {period} · {modality.toUpperCase()}
+            </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="acad-calendario w-full h-auto lg:h-[24rem] object-contain"
+              src={assets.calendario}
+              alt="Calendario"
+            />
+          </article>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
