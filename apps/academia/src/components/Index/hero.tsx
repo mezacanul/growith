@@ -6,38 +6,34 @@ interface HeroProps {
 
 export function Hero({ assets }: HeroProps) {
   return (
-    <section className="hero">
-      <div className="contenedor hero-grid revelar">
-        <div>
-          <span className="hero-etiqueta">Growith Business Academy</span>
+    <section
+      className="hero hero-bg-image bg-cover bg-center"
+      style={{ backgroundImage: `url(${assets.heroBg})` }}
+    >
+      <div className="contenedor revelar">
+        <div className="hero-bg-content">
+          <span className="hero-etiqueta hero-etiqueta-light">
+            Growith Business Academy
+          </span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={assets.businessAcademyLogo}
             alt="Business Academy Logo"
             className="max-w-md"
           />
-          <p className="hero-sub">
+          <p className="hero-sub hero-sub-light">
             El crecimiento que estas buscando, esta en tus manos...
           </p>
-          <p className="hero-texto">
+          <p className="hero-texto hero-texto-light">
             Portal del participante para implementaciones, calendario y sesiones
             con tu trainer.
           </p>
-        </div>
-
-        <div className="hero-figura">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={assets.heroBg} alt="Academia Growith" />
-          <div className="hero-tarjeta">
-            <strong>Let&apos;s Growith</strong>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={assets.letsGrowith}
-              alt="Lets Growith"
-              className="mt-3 max-h-8 object-contain"
-            />
-            <span className="block mt-2">Tu espacio de trabajo ejecutivo</span>
-          </div>
+          <img
+            src={assets.letsGrowith}
+            alt="Lets Growith"
+            className="hero-logo-sub"
+          />
         </div>
       </div>
     </section>

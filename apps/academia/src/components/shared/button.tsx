@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 const variantMap = {
-  primary: "btn btn-primario",
-  light: "btn btn-claro",
-  dark: "btn btn-borde-claro",
+  primary: "aca-btn aca-btn-primary",
+  light: "aca-btn aca-btn-light",
+  dark: "aca-btn aca-btn-primary",
 } as const;
 
 type ButtonVariant = keyof typeof variantMap;

@@ -7,24 +7,26 @@ interface EventoProps {
 
 export function Evento({ data }: EventoProps) {
   return (
-    <section className="secondary-bg">
-      <div className="contenedor revelar">
-        <span className="eyebrow">Próximo evento</span>
-        <div className="acad-evento-grid">
-          <h2 className="max-w-none">{data.textoIzq}</h2>
+    <section className="aca-section aca-evento">
+      <div className="aca-contenedor">
+        <div className="aca-card aca-evento-card">
+          <div>
+            <span className="aca-eyebrow">Próximo evento</span>
+            <p className="aca-evento-side">{data.textoIzq}</p>
+          </div>
 
           <div>
-            <h3 className="text-2xl mb-3">{data.titulo}</h3>
-            <p className="intro-seccion mt-0">{data.descripcion}</p>
-            <div className="acad-evento-meta">
-              <span>
-                <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>
+            <h2 className="text-2xl lg:text-3xl font-bold mb-3">{data.titulo}</h2>
+            <p className="aca-evento-body">{data.descripcion}</p>
+            <div className="aca-evento-meta mt-4">
+              <span className="aca-chip">
+                <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
                   event_available
                 </span>
                 {data.fecha}
               </span>
-              <span>
-                <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>
+              <span className="aca-chip">
+                <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
                   schedule
                 </span>
                 {data.hora}
@@ -32,7 +34,7 @@ export function Evento({ data }: EventoProps) {
             </div>
           </div>
 
-          <div>
+          <div className="flex items-center lg:justify-end">
             <Button variant="primary" asLink href={data.url}>
               {data.textoBtn}
             </Button>

@@ -8,22 +8,19 @@ interface ReunionesProps {
 
 export function Reuniones({ meet }: ReunionesProps) {
   return (
-    <section className="cta-final revelar">
-      <div className="contenedor">
-        <span className="marca-sup">Sesiones en vivo</span>
-        <h2>Mantente al tanto de las sesiones con tu Trainer</h2>
-        <p className="sub">
-          Conecta puntualmente cada semana para revisar avances y resolver dudas.
+    <section className="aca-meet">
+      <div className="aca-meet-inner">
+        <span className="aca-eyebrow tc-white">Sesiones en vivo</span>
+        <p className="text-lg lg:text-xl">
+          Mantente al tanto de las sesiones con tu Trainer
         </p>
-        <p className="nombre-programa">
+        <p className="aca-meet-schedule">
           {`${toTitleCase(meet.dayOfCall)} a las ${meet.timeOfCall.toUpperCase()}`}
         </p>
         {meet.meetURL && (
-          <div className="botones">
-            <Button variant="dark" asLink href={meet.meetURL}>
-              Reunión online
-            </Button>
-          </div>
+          <Button variant="light" asLink href={meet.meetURL}>
+            Reunión online
+          </Button>
         )}
       </div>
     </section>

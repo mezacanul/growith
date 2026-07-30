@@ -13,19 +13,23 @@ export function MaterialDeTrabajo({
   drive,
 }: MaterialDeTrabajoProps) {
   return (
-    <section className="secondary-bg">
-      <div className="contenedor centrado revelar">
-        <span className="eyebrow">Biblioteca</span>
-        <h2 className="max-w-none font-light text-3xl lg:text-4xl">
-          Encuentra aquí nuestros recursos de trabajo
-        </h2>
-        <p className="intro-seccion">Periodo</p>
-        <p className="tc-primary font-bold italic text-xl lg:text-3xl">
-          {`${period} - ${modality.toUpperCase()}`}
-        </p>
+    <section className="aca-section">
+      <div className="aca-contenedor">
+        <div className="aca-material-intro mb-10">
+          <span className="aca-eyebrow">Biblioteca</span>
+          <h2 className="text-2xl lg:text-4xl font-light max-w-none">
+            Encuentra aquí nuestros recursos de trabajo
+          </h2>
+          <p className="mt-3 text-base lg:text-lg">Periodo</p>
+          <p className="aca-material-period">
+            {`${period} - ${modality.toUpperCase()}`}
+          </p>
+        </div>
 
-        <div className="acad-frame max-w-5xl mx-auto mt-10">
-          <IFrame src={drive.resourcesURL} className="h-[30rem]" />
+        <div className="aca-card aca-bento-panel">
+          <div className="aca-frame-wrap">
+            <IFrame src={drive.resourcesURL} className="h-[30rem]" />
+          </div>
         </div>
       </div>
     </section>
