@@ -16,7 +16,7 @@
   --texto: var(--text-night);
   --texto-suave: rgba(13, 15, 14, 0.62);
   --blanco: var(--text-off-white);
-  --gris-100: #eceae6;
+  --gris-100: #e0ded9;
   --borde: rgba(31, 58, 38, 0.14);
   --oro: var(--text-forest-green);
 
@@ -76,23 +76,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 section { padding: var(--seccion) 0; }
 
 .eyebrow {
-  font-family: var(--f-titulos);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--verde-acento);
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-forest-green);
 }
 
 .eyebrow::before {
   content: "";
-  width: 34px;
-  height: 2px;
-  background: var(--oro);
+  display: block;
+  width: 2rem;
+  height: 0.125rem;
+  background: linear-gradient(90deg, var(--text-forest-green), transparent);
+}
+
+.eyebrow-light {
+  color: var(--text-off-white);
+}
+
+.eyebrow-light::before {
+  background: rgba(242, 241, 239, 0.5);
 }
 
 h1, h2, h3, h4 {

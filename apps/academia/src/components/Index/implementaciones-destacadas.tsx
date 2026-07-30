@@ -9,7 +9,7 @@ export function ImplementacionesDestacadas({
   drive,
 }: ImplementacionesDestacadasProps) {
   return (
-    <section className="bg-[#eceae6]">
+    <section className="bg-[var(--gris-100)]">
       <div className="contenedor revelar grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <span className="eyebrow">Destacadas</span>

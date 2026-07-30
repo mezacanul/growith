@@ -18,7 +18,7 @@ export function EspacioDeTrabajo({
   modality,
 }: EspacioDeTrabajoProps) {
   return (
-    <section className="!pt-[3rem]">
+    <section className="bg-off-white !pt-[4rem]">
       <div className="contenedor revelar text-center [&_h2]:mx-auto [&_.intro]:mx-auto">
         <span className="eyebrow">Tu espacio</span>
         <h2 className="max-w-none">Este es tu espacio de trabajo</h2>
@@ -36,19 +36,19 @@ export function EspacioDeTrabajo({
           />
         </div>
 
-        <div className="mt-12 grid grid-cols-1 items-start gap-9 lg:grid-cols-2">
-          <article className="rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-off-white p-7 text-left shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
+        <div className="mt-12 h-[40rem] grid grid-cols-1 items-start gap-9 lg:grid-cols-2">
+          <article className="h-full pt-10 flex flex-col rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-off-white p-7 text-left shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
             <span className="eyebrow">Implementaciones</span>
-            <h3 className="mb-3 text-xl">Carpeta personal</h3>
+            <h3 className=" text-xl">Carpeta personal</h3>
             <p className="intro-seccion mt-0 mb-4">
               Accede a tu carpeta personal para subir tus implementaciones aquí.
             </p>
-            <div className="min-h-[25rem] overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
-              <IFrame src={drive.impURL} className="h-[25rem]" />
+            <div className="h-full overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
+              <IFrame src={drive.impURL} className="" />
             </div>
           </article>
 
-          <article className="rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-off-white p-7 text-left shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
+          <article className="h-full rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-off-white p-7 text-left shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
             <span className="eyebrow">Calendario</span>
             <h3 className="mb-2 text-xl">Business Academy</h3>
             <p className="text-lg font-bold text-forest-green">
@@ -56,7 +56,7 @@ export function EspacioDeTrabajo({
             </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              className="mt-4 h-auto w-full rounded-[10px] object-contain shadow-[0_18px_48px_rgba(13,15,14,0.1)] lg:h-[24rem]"
+              className="mt-4 h-auto w-full rounded-[10px] object-contain shadow-[0_18px_48px_rgba(13,15,14,0.1)]"
               src={assets.calendario}
               alt="Calendario"
             />

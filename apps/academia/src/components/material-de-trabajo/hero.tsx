@@ -14,8 +14,8 @@ export function HeroMT({ assets }: HeroMTProps) {
         className="absolute inset-0 bg-[linear-gradient(120deg,rgba(13,15,14,0.82)_0%,rgba(31,58,38,0.62)_50%,rgba(57,103,67,0.4)_100%)]"
         aria-hidden
       />
-      <div className="contenedor relative z-10 revelar w-full text-center">
-        <div className="mx-auto max-w-2xl rounded-[1.5rem] border border-off-white/18 bg-off-white/8 p-6 text-center text-off-white backdrop-blur-[10px] md:p-9">
+      <div className="contenedor relative z-10 revelar w-[60rem] text-center">
+        <div className="mx-auto w-auto rounded-[1.5rem] border border-off-white/18 bg-off-white/8 p-6 text-center text-off-white backdrop-blur-[10px] md:p-9">
           <p className="mb-4 text-[0.78rem] uppercase tracking-[0.28em] opacity-80">
             Recursos
           </p>

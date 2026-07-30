@@ -7,13 +7,11 @@ interface EventoProps {
 
 export function Evento({ data }: EventoProps) {
   return (
-    <section className="relative z-[2] -mt-10 !py-[clamp(4rem,8vw,6.5rem)]">
+    <section className="relative z-[2] -mt-10 bg-[var(--gris-100)] !py-[clamp(4rem,8vw,6.5rem)]">
       <div className="mx-auto w-[min(92%,72rem)]">
         <div className="grid gap-6 rounded-[1.25rem] border border-[rgba(31,58,38,0.1)] bg-white/55 p-[clamp(1.5rem,3vw,2.25rem)] shadow-[0_24px_60px_rgba(13,15,14,0.08)] backdrop-blur-[12px] lg:grid-cols-[0.9fr_1.4fr_auto] lg:items-center">
           <div>
-            <span className="mb-4 inline-flex items-center gap-2.5 text-[0.72rem] font-bold uppercase tracking-[0.24em] text-forest-green before:block before:h-0.5 before:w-8 before:bg-[linear-gradient(90deg,var(--text-forest-green),transparent)] before:content-['']">
-              Próximo evento
-            </span>
+            <span className="eyebrow">Próximo evento</span>
             <p className="text-[clamp(1.4rem,2.5vw,1.9rem)] font-bold leading-tight text-dark-green">
               {data.textoIzq}
             </p>

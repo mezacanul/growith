@@ -16,9 +16,7 @@ export function MaterialDeTrabajo({
     <section className="!py-[clamp(4rem,8vw,6.5rem)]">
       <div className="mx-auto w-[min(92%,72rem)]">
         <div className="mx-auto mb-10 max-w-xl text-center">
-          <span className="mb-4 inline-flex items-center gap-2.5 text-[0.72rem] font-bold uppercase tracking-[0.24em] text-forest-green before:block before:h-0.5 before:w-8 before:bg-[linear-gradient(90deg,var(--text-forest-green),transparent)] before:content-['']">
-            Biblioteca
-          </span>
+          <span className="eyebrow">Biblioteca</span>
           <h2 className="max-w-none text-2xl font-light lg:text-4xl">
             Encuentra aquí nuestros recursos de trabajo
           </h2>

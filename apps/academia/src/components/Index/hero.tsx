@@ -23,7 +23,7 @@ export function Hero({ assets }: HeroProps) {
           <img
             src={assets.businessAcademyLogo}
             alt="Business Academy Logo"
-            className="mx-auto max-w-md"
+            className="mx-auto w-full md:max-w-md"
           />
           <p className="mx-auto mt-5 font-sans text-[clamp(1rem,2vw,1.2rem)] font-normal leading-[1.45] text-off-white">
             El crecimiento que estas buscando, esta en tus manos...
@@ -32,7 +32,7 @@ export function Hero({ assets }: HeroProps) {
           <img
             src={assets.letsGrowith}
             alt="Lets Growith"
-            className="mx-auto mt-6 w-[22rem]"
+            className="mx-auto mt-6 w-[15rem] md:w-[22rem]"
           />
         </div>
       </div>
