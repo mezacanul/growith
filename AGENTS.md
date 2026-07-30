@@ -13,7 +13,7 @@ growith/
 └── src/             # Legacy Google Sites / Apps Script HTML prototypes
 ```
 
-Each app under `apps/` is a **standalone Next.js project** (own `package.json`, lockfile, and `pnpm-workspace.yaml` for native build allowlists). There is no shared `packages/` workspace yet — do not import landing content, components, or styles into academia (or vice versa).
+Apps under `apps/` are Next.js projects in a **pnpm workspace** (root `pnpm-workspace.yaml` + `package.json`, single root `pnpm-lock.yaml`). There is no shared `packages/` library yet — do not import landing content, components, or styles into academia (or vice versa). On Vercel, create one project per app and set **Root Directory** to `apps/landing` or `apps/academia`.
 
 Legacy prototypes live in `src/` (`Landing.html`, `Academia.html`). New work should land in the corresponding Next app, not in those HTML files.
 

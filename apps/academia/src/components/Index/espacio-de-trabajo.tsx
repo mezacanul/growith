@@ -36,14 +36,14 @@ export function EspacioDeTrabajo({
           />
         </div>
 
-        <div className="mt-12 h-[40rem] grid grid-cols-1 items-start gap-9 lg:grid-cols-2">
+        <div className="mt-12 h-auto lg:h-[40rem] grid grid-cols-1 items-start gap-9 lg:grid-cols-2">
           <article className="h-full pt-10 flex flex-col rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-off-white p-7 text-left shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
             <span className="eyebrow">Implementaciones</span>
             <h3 className=" text-xl">Carpeta personal</h3>
             <p className="intro-seccion mt-0 mb-4">
               Accede a tu carpeta personal para subir tus implementaciones aquí.
             </p>
-            <div className="h-full overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
+            <div className="h-[30rem] lg:h-full overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
               <IFrame src={drive.impURL} className="" />
             </div>
           </article>

@@ -1,4 +1,5 @@
 import { IFrame } from "@/components/shared/iframe";
+import { cn } from "@/lib/utils";
 import type { AcademiaDrive } from "@/types/academia-page-data";
 
 interface ImplementacionesDestacadasProps {
@@ -9,7 +10,7 @@ export function ImplementacionesDestacadas({
   drive,
 }: ImplementacionesDestacadasProps) {
   return (
-    <section className="bg-[var(--gris-100)]">
+    <section className={cn("bg-[var(--gris-100)]", "!pb-0 lg:!pb-10")}>
       <div className="contenedor revelar grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <span className="eyebrow">Destacadas</span>
