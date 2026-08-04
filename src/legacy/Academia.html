@@ -1,0 +1,776 @@
+<!doctype html>
+<html>
+  <head>
+    <base target="_top" />
+
+    <!-- Estas lineas son ignoradas por Google Scripts. -->
+    <!-- Se crea una template y se encadenan los metodos: -->
+    <!-- setTitle y addMetaTag. -->
+    <title>Growith | Academia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      /* @name window.GOOGLE_DATA */
+      /* @type {Object} */
+      /* @description Datos de ejemplo para el objeto window.GOOGLE_DATA. */
+      // Aqui se define el objeto window.GOOGLE_DATA.
+      // Google utiliza interpolacion para inyectar el objeto en el HTML,
+      // pero la cadena de texto que inyecta no es un objeto valido para
+      // este formato de archivo HTML.
+      // Por eso, aqui utilizamos un objeto con datos de ejemplo.
+
+      // (Nota): Para que el codigo en Google Scripts funcione correctamente,
+      // el objeto `data` debe tener las mismas propiedades que los datos
+      // de ejemplo aqui definidos.
+
+      // Datos de ejemplo para el objeto window.GOOGLE_DATA.
+      window.GOOGLE_DATA = {
+        period: "MARZO 2026",
+        modality: "presencial",
+        assets: {
+          heroBg:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/hero-bg.png",
+          growithLogo:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-growith.png",
+          businessAcademyLogo:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/logo-business-academy.png",
+          letsGrowith:
+            "https://cdn.jsdelivr.net/gh/mezacanul/growith@main/assets/academia/lets-growith.png",
+          clientLogo:
+            "https://lh3.googleusercontent.com/d/1jvzPPHIIBIIoIsaGzj52zlnzaTYkGdJ9",
+          calendario:
+            "https://lh3.googleusercontent.com/d/1vXt_NuB1mwlpH6DopqwxC4PhHJ82yS2r",
+        },
+        evento: {
+          fecha: "30 de Julio",
+          hora: "10:00 AM",
+          url: "https://www.google.com",
+          textoBtn: "Contactanos",
+          textoIzq: "Suscribete a nuestro proximo evento",
+          titulo:
+            "Evento de academia en Growith - Presencial (Merida, Yucatan)",
+          descripcion:
+            "Este es un evento publico realizado por Growith, donde se impartiran conocimientos basicos para el crecimiento de tu negocio.",
+        },
+        drive: {
+          impURL:
+            // "https://drive.google.com/embeddedfolderview?id=12Rd5E0SLKetEJb_Vz4DQV28VICtxjIx6#grid",
+            "https://drive.google.com/drive/folders/12Rd5E0SLKetEJb_Vz4DQV28VICtxjIx6?usp=drive_link",
+          impDestacadasURL:
+            "https://drive.google.com/embeddedfolderview?id=1mMqB-DejHbMszssW36U7Gx1qbTCyMt6q#list",
+          // "https://drive.google.com/drive/folders/1mMqB-DejHbMszssW36U7Gx1qbTCyMt6q?usp=drive_link",
+          resourcesURL:
+            "https://drive.google.com/embeddedfolderview?id=1O2yklXNRRkBleM7ngubKLaxzXX59_tQ5#list",
+        },
+        meet: {
+          meetURL: "https://meet.google.com/pqp-xmcc-czi",
+          dayOfCall: "viernes",
+          timeOfCall: "10:00 am",
+        },
+      };
+
+      // Al subir el archivo Index.html a Google Sites,
+      // reemplazamos la definicion de window.GOOGLE_DATA en Google Scripts
+      // con el siguiente codigo:
+
+      const jsonData = <?= data ?>;
+      window.GOOGLE_DATA = JSON.parse(jsonData)
+
+      console.log("Google Data typeof:", typeof window.GOOGLE_DATA);
+      console.log("Google Data:", window.GOOGLE_DATA);
+
+      const paginas = [
+        { title: "Inicio", route: "/" },
+        { title: "Material de Trabajo", route: "material-de-trabajo" },
+      ];
+
+      function cn(...classes) {
+        return classes.filter(Boolean).join(" ");
+      }
+    </script>
+
+    <!-- Tailwind V3  -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- Tailwind V4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-sans: "Montserrat", sans-serif;
+
+        --text-off-white: #f2f1ef;
+        --text-stone: #e1e1db;
+        --text-forest-green: #396743;
+        --text-dark-green: #1f3a26;
+        --text-night: #0d0f0e;
+      }
+      html {
+        font-family: var(--font-sans) !important;
+        color: var(--text-night);
+        background-color: var(--text-off-white);
+        scroll-behavior: smooth;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      .text-white {
+        color: var(--text-off-white);
+      }
+      .bg-white {
+        background-color: var(--text-off-white);
+      }
+      .tc-primary {
+        color: var(--text-forest-green);
+      }
+      .tc-white {
+        color: var(--text-off-white);
+      }
+      .tc-stone {
+        color: var(--text-stone);
+      }
+      .tc-forest-green {
+        color: var(--text-forest-green);
+      }
+      .tc-dark-green {
+        color: var(--text-dark-green);
+      }
+      .tc-night {
+        color: var(--text-night);
+      }
+
+      .bgc-primary {
+        background-color: var(--text-forest-green);
+      }
+      .bgc-white {
+        background-color: var(--text-off-white);
+      }
+      .bgc-stone {
+        background-color: var(--text-stone);
+      }
+      .bgc-forest-green {
+        background-color: var(--text-forest-green);
+      }
+      .bgc-dark-green {
+        background-color: var(--text-dark-green);
+      }
+      .bgc-night {
+        background-color: var(--text-night);
+      }
+
+      .material-symbols-outlined {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body className="bg-slate-100">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Importamos useState y useEffect como objetos de React
+      const { useState, useEffect } = React;
+
+      // Componente principal
+      function App({ data }) {
+        const [page, setPage] = useState("/");
+
+        return (
+          <div className="w-[100vw]">
+            {/* Menu de navegacion */}
+            <Header assets={data.assets} setPage={setPage} />
+
+            {page === "/" && (
+              <>
+                {/* Contenido principal de la pagina */}
+                <HeroRoot assets={data.assets} />
+                <Evento data={data.evento} />
+                <EspacioDeTrabajo
+                  drive={data.drive}
+                  assets={data.assets}
+                  period={data.period}
+                  modality={data.modality}
+                />
+                <ImplementacionesDestacadas drive={data.drive} />
+                <Reuniones assets={data.assets} meet={data.meet} />
+              </>
+            )}
+
+            {page === "material-de-trabajo" && (
+              <>
+                {/* Contenido principal de la pagina */}
+                <HeroMT assets={data.assets} />
+                <MaterialDeTrabajo
+                  drive={data.drive}
+                  modality={data.modality}
+                  period={data.period}
+                />
+              </>
+            )}
+          </div>
+        );
+      }
+
+      function Header({ assets, setPage }) {
+        const [scrolled, setScrolled] = useState(false);
+        const [menuOpen, setMenuOpen] = useState(false);
+        const [showContent, setShowContent] = useState(false);
+
+        useEffect(() => {
+          const handleScroll = () => {
+            const next = window.scrollY > 80;
+            setScrolled((prev) => (prev !== next ? next : prev));
+          };
+          handleScroll();
+          window.addEventListener("scroll", handleScroll);
+          return () => window.removeEventListener("scroll", handleScroll);
+        }, []);
+
+        function toggleMenu() {
+          setMenuOpen((prev) => !prev);
+        }
+
+        useEffect(() => {
+          if (menuOpen === true) {
+            setTimeout(() => {
+              setShowContent(true);
+            }, 200);
+          } else {
+            setShowContent(false);
+          }
+        }, [menuOpen]);
+
+        return (
+          <>
+            <header
+              className={cn(
+                "fixed top-0 left-0 w-full py-5 lg:py-6 z-50",
+                "transition-all duration-200",
+                scrolled ? "bgc-night shadow-md" : "",
+              )}
+            >
+              <div className="flex w-[90%] mx-auto justify-between items-center text-white">
+                {/* Logo Growith */}
+                <img
+                  className="h-6 object-contain"
+                  src={assets.growithLogo}
+                  alt="Growith Logo"
+                />
+
+                {/* Boton de menu de navegacion version mobil */}
+                <div onClick={toggleMenu} className="block lg:hidden">
+                  <span
+                    className="material-symbols-outlined tc-white cursor-pointer"
+                    style={{ fontSize: "2.4rem" }}
+                  >
+                    {"menu"}
+                  </span>
+                </div>
+
+                {/* Menu de navegacion version de escritorio */}
+                <div className="hidden lg:flex items-center gap-4">
+                  {paginas.map((pagina) => (
+                    <span
+                      key={pagina.title}
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                        setPage(pagina.route);
+                      }}
+                      className="cursor-pointer"
+                    >
+                      {pagina.title}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </header>
+
+            {/* Menu de navegacion version mobil */}
+            <div
+              className={cn(
+                "fixed top-0 left-0 h-full bgc-night z-50 text-white",
+                menuOpen === true ? "w-full" : "w-0",
+                "transition-all duration-200",
+              )}
+            >
+              {/* Contenido del menu */}
+              {showContent === true && (
+                <div
+                  className={cn(
+                    "relative w-full h-full p-5",
+                    "transition-all duration-300",
+                  )}
+                >
+                  <span
+                    onClick={toggleMenu}
+                    className={cn(
+                      "material-symbols-outlined block lg:hidden tc-white cursor-pointer",
+                      "absolute top-5 right-5",
+                    )}
+                    style={{ fontSize: "2.4rem" }}
+                  >
+                    {"close"}
+                  </span>
+                  <div className="p-5 w-full h-full flex flex-col gap-4">
+                    {paginas.map((pagina) => (
+                      <span
+                        onClick={() => {
+                          window.scrollTo(0, 0);
+                          setPage(pagina.route);
+                          toggleMenu();
+                        }}
+                        className="text-xl cursor-pointer"
+                        key={pagina.title}
+                      >
+                        {pagina.title}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </>
+        );
+      }
+
+      function HeroRoot({ assets }) {
+        return (
+          <Section
+            className={cn(
+              "text-white text-center flex flex-col items-center justify-center",
+              `bg-cover bg-center h-[30rem]`,
+              "gap-4 lg:gap-4",
+            )}
+            style={{ backgroundImage: `url(${assets.heroBg})` }}
+          >
+            <Text variant="h5" className="font-light">
+              {"Bienvenido a"}
+            </Text>
+            <img
+              src={assets.businessAcademyLogo}
+              alt="Business Academy Logo"
+              className={cn(
+                "object-contain",
+                "h-auto md:h-auto lg:h-18",
+                "w-auto md:w-[70%] lg:w-auto",
+              )}
+            />
+            <Text
+              // variant="h4"
+              className="text-lg lg:text-xl lg:border-b-2 lg:pb-2 w-75 lg:w-auto"
+              style={{ borderColor: "var(--text-off-white)" }}
+            >
+              {"El crecimiento que estas buscando, esta en tus manos..."}
+            </Text>
+            <img
+              src={assets.letsGrowith}
+              alt="Lets Growith"
+              className={cn(
+                "object-contain",
+                "h-auto lg:h-10",
+                "w-[65%] md:w-[50%] lg:w-auto",
+              )}
+            />
+          </Section>
+        );
+      }
+
+      function Evento({ data }) {
+        return (
+          <>
+            {/* Version mobil */}
+            <Section
+              className={cn(
+                "flex py-10 flex-col items-start gap-[1rem] lg:hidden",
+              )}
+            >
+              <div className="w-[100%] h-full flex flex-col gap-2">
+                <Text variant="h3" className="font-bold">
+                  {data.titulo}
+                </Text>
+
+                <div className="w-[100%] flex flex-col gap-3 justify-between font-bold">
+                  <div className="flex items-center gap-1">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "20px" }}
+                    >
+                      {"event_available"}
+                    </span>
+                    <span className="text-sm"> {data.fecha} </span>
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "20px" }}
+                    >
+                      {"schedule"}
+                    </span>
+                    <span className="text-sm">{data.hora}</span>
+                  </div>
+                </div>
+
+                <Text variant="p">{data.descripcion}</Text>
+              </div>
+
+              <Button
+                variant="primary"
+                className="w-[50%]"
+                asLink={true}
+                href={data.url}
+              >
+                {data.textoBtn}
+              </Button>
+            </Section>
+
+            {/* Version de escritorio */}
+            <Section className="hidden h-[25rem] lg:flex gap-[2rem] items-center justify-between">
+              <Text variant="h2" className="w-[25%] tc-primary">
+                {data.textoIzq}
+              </Text>
+
+              <div className="w-[50%] flex justify-center items-center text-center">
+                <div className="flex flex-col gap-3 w-[75%] h-full">
+                  <Text variant="h2" className="font-bold">
+                    {data.titulo}
+                  </Text>
+                  <Text variant="p">{data.descripcion}</Text>
+                  <div className="w-[100%] flex justify-between font-bold">
+                    <div className="flex items-center gap-2">
+                      <Text
+                        variant="p"
+                        inline
+                        className="material-symbols-outlined"
+                      >
+                        {"event_available"}
+                      </Text>
+                      <Text variant="p" inline>
+                        {data.fecha}
+                      </Text>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Text
+                        variant="p"
+                        inline
+                        className="material-symbols-outlined"
+                      >
+                        {"schedule"}
+                      </Text>
+                      <Text variant="p" inline>
+                        {data.hora}
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-[25%] flex justify-end">
+                <Button variant="primary" asLink={true} href={data.url}>
+                  {data.textoBtn}
+                </Button>
+              </div>
+            </Section>
+          </>
+        );
+      }
+
+      function EspacioDeTrabajo({ drive, assets, period, modality }) {
+        return (
+          <Section
+            parentClass={"bgc-stone"}
+            className={cn(
+              "flex flex-col lg:grid grid-cols-5 justify-between items-center py-[6rem]",
+              "gap-15 lg:gap-0",
+            )}
+          >
+            <div className="col-span-3 flex flex-col items-center lg:items-start gap-[1.5rem]">
+              <Text variant="h3" className="text-center lg:text-left">
+                {"Este es tu espacio de trabajo"}
+              </Text>
+              <div className="w-full lg:w-[30rem] h-[10rem]">
+                {/* <Skeleton title="Logo" /> */}
+                <img
+                  src={assets.clientLogo}
+                  className="object-contain w-full h-full"
+                  alt="Logo"
+                />
+              </div>
+
+              <Button variant="primary" asLink={true} href={drive.impURL}>
+                {"Sube aquí tus implementaciones"}
+              </Button>
+            </div>
+
+            <div className="col-span-2 flex flex-col items-center justify-center gap-5 lg:gap-[1.5rem]">
+              <div className="text-center flex flex-col items-center justify-center gap-2">
+                <Text variant="h4">{"CALENDARIO BUSINESS ACADEMY"}</Text>
+                <Text variant="h4" className={"font-bold tc-primary"}>
+                  {period}
+                </Text>
+                <Text variant="h4" className={"font-bold tc-primary"}>
+                  {modality.toUpperCase()}
+                </Text>
+              </div>
+              {/* <Skeleton title="Calendario" h="30rem" /> */}
+              <img
+                className="w-full lg:w-auto h-auto lg:h-[30rem] object-contain"
+                src={assets.calendario}
+                alt="Calendario"
+              />
+              {/* <Button variant="primary">{"Ver calendario"}</Button> */}
+            </div>
+          </Section>
+        );
+      }
+
+      function ImplementacionesDestacadas({ drive }) {
+        return (
+          <Section
+            className={cn(
+              "flex flex-col lg:grid h-auto lg:h-[35rem] grid-cols-5 justify-around items-center gap-5",
+              "gap-15 lg:gap-0",
+              "text-center lg:text-left",
+              "py-15 lg:py-0",
+            )}
+          >
+            <Text variant="h2" className="col-span-2">
+              {"Encuentra aquí tus implementaciones más destacadas"}
+            </Text>
+            <div className="col-span-3 w-full lg:w-auto h-[25rem]">
+              <IFrame src={drive.impDestacadasURL} />
+              {/* <Skeleton title="Implementacion 1" h="20rem" /> */}
+            </div>
+          </Section>
+        );
+      }
+
+      function Reuniones({ assets, meet }) {
+        return (
+          <Section
+            className="h-[20rem] text-white flex flex-col justify-center items-center gap-3"
+            style={{ backgroundImage: `url(${assets.heroBg})` }}
+          >
+            <Text variant="h4" className={"text-center"}>
+              {"Mantente al tanto de las sesiones con tu Trainer"}
+            </Text>
+            <Text variant="h1" className="text-center font-bold italic mb-4">
+              {`${toTitleCase(meet.dayOfCall)} a las ${meet.timeOfCall.toUpperCase()}`}
+            </Text>
+            {meet.meetURL && (
+              <Button variant="light" asLink={true} href={meet.meetURL}>
+                {"REUNIÓN ONLINE"}
+              </Button>
+            )}
+          </Section>
+        );
+      }
+
+      // -----------------------------------
+      // Componentes Material de Trabajo
+      // -----------------------------------
+      function HeroMT({ assets }) {
+        return (
+          <Section
+            className={cn(
+              "text-white text-center flex flex-col items-center justify-center",
+              `bg-cover bg-center h-[30rem]`,
+              "gap-4 lg:gap-4",
+            )}
+            style={{ backgroundImage: `url(${assets.heroBg})` }}
+          >
+            <Text
+              variant="h1"
+              className="font-light text-[3rem] lg:text-[4.5rem]"
+            >
+              {"Material de Trabajo"}
+            </Text>
+          </Section>
+        );
+      }
+
+      function MaterialDeTrabajo({ period, modality, drive }) {
+        return (
+          <Section
+            className={cn(
+              "text-center flex flex-col items-center justify-center",
+              "gap-5 lg:gap-10",
+              "py-17 lg:py-26",
+            )}
+          >
+            {/* Titulo y periodo */}
+            <div className="text-center flex flex-col items-center justify-center gap-3">
+              <Text variant="h3" className="font-light text-xl lg:text-4xl">
+                {"Encuentra aquí nuestros recursos de trabajo"}
+              </Text>
+              <Text variant="p" className="text-base lg:text-xl">
+                {"Periodo"}
+              </Text>
+              <Text
+                variant="p"
+                className="tc-primary font-bold italic text-base lg:text-3xl"
+              >
+                {`${period} - ${modality.toUpperCase()}`}
+              </Text>
+            </div>
+
+            {/* IFrame del material de trabajo */}
+            <div className="w-full h-[30rem]">
+              <IFrame src={drive.resourcesURL} />
+            </div>
+          </Section>
+        );
+      }
+
+      // ------------------------------
+      // Componentes reutilizables
+      // ------------------------------
+      // Text
+      // Button
+      // Section
+      // IFrame
+      // Skeleton
+      // ------------------------------
+      function Text({
+        variant = "p",
+        children,
+        className,
+        inline = false,
+        ...props
+      }) {
+        const fontSizeMap = {
+          p: "text-base",
+          h1: "text-4xl",
+          h2: "text-3xl",
+          h3: "text-2xl",
+          h4: "text-xl",
+          h5: "text-lg",
+          h6: "text-base",
+          sm: "text-sm",
+          xs: "text-xs",
+        };
+        const spreadProps = {
+          className: cn(fontSizeMap[variant], className),
+          ...props,
+        };
+        return inline === true ? (
+          <span {...spreadProps}>{children}</span>
+        ) : (
+          <p {...spreadProps}>{children}</p>
+        );
+      }
+
+      function Button({
+        variant = "primary",
+        children,
+        className,
+        asLink = false,
+        href = "",
+        target = "_blank",
+      }) {
+        const variantMap = {
+          primary: "bgc-primary tc-white",
+          light: "bgc-white tc-primary",
+          dark: "bgc-night tc-white",
+        };
+        const props = {
+          className: cn(
+            variantMap[variant],
+            "rounded-sm py-2 px-5 text-center",
+            "text-base font-bold",
+            "transition-all duration-300",
+            "hover:scale-105",
+            "uppercase",
+            "shadow-sm",
+            "hover:cursor-pointer",
+            className,
+          ),
+        };
+        if (asLink === true) {
+          return (
+            <a target={target} href={href} {...props}>
+              {children}
+            </a>
+          );
+        }
+        return <button {...props}>{children}</button>;
+      }
+
+      function Section({ children, className, parentClass, ...props }) {
+        return (
+          <section
+            className={cn("w-full flex justify-center", parentClass)}
+            {...props}
+          >
+            <div className={cn("w-[85%] lg:w-[80%] lg:mx-auto", className)}>
+              {children}
+            </div>
+          </section>
+        );
+      }
+
+      function IFrame({ src, className }) {
+        return (
+          <iframe
+            src={src}
+            className={cn(
+              "w-full h-full",
+              "bg-[#FFFFFF] rounded-md shadow-md border-4 border-gray-300",
+              className,
+            )}
+          ></iframe>
+        );
+      }
+
+      function Skeleton({ title, w = "100%", h = "100%" }) {
+        return (
+          <div
+            className={cn(
+              "bg-gray-300 rounded-md flex justify-center items-center",
+              "shadow-lg",
+            )}
+            style={{ width: w, height: h }}
+          >
+            <Text variant="h3" className="opacity-30 font-medium">
+              {title}
+            </Text>
+          </div>
+        );
+      }
+
+      // -----------------------------------
+      // Utilidades
+      // -----------------------------------
+      function toTitleCase(str) {
+        return str
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      }
+
+      // -----------------------------------
+      // Render
+      // -----------------------------------
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <App data={window.GOOGLE_DATA} />,
+      );
+    </script>
+  </body>
+</html>

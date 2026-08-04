@@ -27,7 +27,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const data = await getAcademiaPageData();
+  const clientID = "soferp";
+  const data = await getAcademiaPageData(clientID);
 
   return (
     <html
@@ -41,7 +42,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">
-        <Header assets={data.assets} />
+        {/* <Header assets={data.assets} /> */}
         {children}
       </body>
     </html>

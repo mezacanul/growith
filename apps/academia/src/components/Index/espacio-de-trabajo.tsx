@@ -29,11 +29,18 @@ export function EspacioDeTrabajo({
 
         <div className="mx-auto mt-7 max-w-xl rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-off-white p-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={assets.clientLogo}
-            className="mx-auto h-[8rem] w-full object-contain"
-            alt="Logo del cliente"
-          />
+          {assets.clientLogo && (
+            <img
+              src={assets.clientLogo}
+              className="mx-auto h-[8rem] w-full object-contain"
+              alt="Logo del cliente"
+            />
+          )}
+          {!assets.clientLogo && (
+            <h2 className="text-center font-bold !text-dark-green text-xl lg:text-3xl">
+              {"Soferp"}
+            </h2>
+          )}
         </div>
 
         <div className="mt-12 h-auto lg:h-[40rem] grid grid-cols-1 items-start gap-9 lg:grid-cols-2">
@@ -44,7 +51,11 @@ export function EspacioDeTrabajo({
               Accede a tu carpeta personal para subir tus implementaciones aquí.
             </p>
             <div className="h-[30rem] lg:h-full overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
-              <IFrame src={drive.impURL} className="" />
+              <IFrame
+                src={drive.implementaciones.embed as string}
+                web={drive.implementaciones.webLink as string}
+                drive
+              />
             </div>
           </article>
 

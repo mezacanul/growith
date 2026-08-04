@@ -1,7 +1,7 @@
 export interface AcademiaPageAssets {
   heroBg: string;
-  growithLogo: string;
-  businessAcademyLogo: string;
+  logoGrowith: string;
+  logoBusinessAcademy: string;
   letsGrowith: string;
   clientLogo: string;
   calendario: string;
@@ -17,16 +17,26 @@ export interface AcademiaEvento {
   descripcion: string;
 }
 
+export interface DriveObject {
+  embed?: string;
+  webLink?: string;
+}
+
 export interface AcademiaDrive {
-  impURL: string;
-  impDestacadasURL: string;
-  resourcesURL: string;
+  implementaciones: DriveObject;
+  impDestacadas: DriveObject;
+  materialDidactico: DriveObject;
 }
 
 export interface AcademiaMeet {
   meetURL: string;
   dayOfCall: string;
   timeOfCall: string;
+}
+
+export interface YoutubeVideo {
+  title: string;
+  videoURL: string;
 }
 
 export interface AcademiaPageData {
@@ -36,4 +46,15 @@ export interface AcademiaPageData {
   evento: AcademiaEvento;
   drive: AcademiaDrive;
   meet: AcademiaMeet;
+  youtube: YoutubeVideo[];
+  status?: undefined; // Prevents `'status' in AcademiaPageData` from being true
 }
+
+export interface AcademiaPageError {
+  status: "error";
+  message: string;
+}
+
+export type AcademiaPageDataResponse = 
+  | (AcademiaPageData & { status?: undefined })
+  | AcademiaPageError;

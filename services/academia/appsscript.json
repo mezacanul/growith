@@ -1,0 +1,26 @@
+{
+  "timeZone": "America/Merida",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "version": "v3",
+        "serviceId": "drive"
+      }
+    ],
+    "libraries": [
+      {
+        "userSymbol": "GrowithSDK",
+        "version": "0",
+        "libraryId": "1-EONNPtlLV6B-Z8J9c8INC7PhQCsv_sLsng0nCu5z24f0PzGAwX3mPI4",
+        "developmentMode": true
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE_ANONYMOUS"
+  }
+}
