@@ -21,7 +21,12 @@ export function ImplementacionesDestacadas({
           </p>
         </div>
         <div className="min-h-[25rem] overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
-          <IFrame src={drive.impDestacadasURL} className="h-[25rem]" />
+          <IFrame
+            src={drive.impDestacadas.embed as string}
+            web={drive.impDestacadas.webLink as string}
+            drive
+            className="h-[25rem]"
+          />
         </div>
       </div>
     </section>

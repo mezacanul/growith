@@ -21,7 +21,7 @@ export function Hero({ assets }: HeroProps) {
             Bienvenido a
           </p>
           <img
-            src={assets.businessAcademyLogo}
+            src={assets.logoBusinessAcademy}
             alt="Business Academy Logo"
             className="mx-auto w-full md:max-w-md"
           />

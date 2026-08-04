@@ -27,7 +27,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const data = await getAcademiaPageData();
+  const data = await getAcademiaPageData("soferp");
 
   return (
     <html

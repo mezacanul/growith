@@ -7,6 +7,7 @@ import type { AcademiaPageAssets } from "@/types/academia-page-data";
 const paginas = [
   { title: "Inicio", route: "/" },
   { title: "Material de Trabajo", route: "/material-de-trabajo" },
+  { title: "Videos", route: "/videos" },
 ] as const;
 
 interface HeaderProps {
@@ -21,7 +22,7 @@ export function Header({ assets }: HeaderProps) {
       <div className="nav-inner">
         <Link href="/" className="nav-logo" aria-label="Growith Academia">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={assets.growithLogo} alt="Growith Logo" />
+          <img src={assets.logoGrowith} alt="Growith Logo" />
         </Link>
 
         <nav

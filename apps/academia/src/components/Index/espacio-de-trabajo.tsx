@@ -44,7 +44,11 @@ export function EspacioDeTrabajo({
               Accede a tu carpeta personal para subir tus implementaciones aquí.
             </p>
             <div className="h-[30rem] lg:h-full overflow-hidden rounded-[10px] border border-[rgba(31,58,38,0.14)] bg-white shadow-[0_18px_48px_rgba(13,15,14,0.1)]">
-              <IFrame src={drive.impURL} className="" />
+              <IFrame
+                src={drive.implementaciones.embed as string}
+                web={drive.implementaciones.webLink as string}
+                drive
+              />
             </div>
           </article>
 

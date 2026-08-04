@@ -16,16 +16,23 @@ async function readFallbackData(): Promise<AcademiaPageData> {
 }
 
 export const getAcademiaPageData = unstable_cache(
-  async (): Promise<AcademiaPageData> => {
+  async (clientID: string): Promise<AcademiaPageData> => {
+    // Se construye la URL completa con el ID del cliente.
+    const fullURL = `${googleScriptURL}?id=${clientID}`;
+    console.log("fullURL", fullURL)
+
+    // Si no hay URL, se lee el archivo con el fallback.
     if (!googleScriptURL) {
       return readFallbackData();
     }
 
     try {
-      const response = await fetch(googleScriptURL);
+      // Se hace la petición a la URL de Google Script.
+      const response = await fetch(fullURL);
       const data = await response.json();
       return data as AcademiaPageData;
     } catch (error) {
+      // Si hay un error, se lee el archivo con el fallback.
       console.error("error", error);
       return readFallbackData();
     }
