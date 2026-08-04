@@ -1,7 +1,10 @@
 import { readFile } from "fs/promises";
 import path from "path";
 import { unstable_cache } from "next/cache";
-import type { AcademiaPageData } from "@/types/academia-page-data";
+import type {
+  AcademiaPageData,
+  AcademiaPageDataResponse,
+} from "@/types/academia-page-data";
 
 const googleScriptURL = process.env.GOOGLE_SCRIPT_URL as string;
 
@@ -16,13 +19,14 @@ async function readFallbackData(): Promise<AcademiaPageData> {
 }
 
 export const getAcademiaPageData = unstable_cache(
-  async (clientID: string): Promise<AcademiaPageData> => {
+  async (clientID: string): Promise<AcademiaPageDataResponse> => {
     // Se construye la URL completa con el ID del cliente.
     const fullURL = `${googleScriptURL}?id=${clientID}`;
-    console.log("fullURL", fullURL)
+    console.log("fullURL", fullURL);
 
     // Si no hay URL, se lee el archivo con el fallback.
     if (!googleScriptURL) {
+      throw new Error("Google Script URL is not set");
       return readFallbackData();
     }
 
@@ -30,10 +34,11 @@ export const getAcademiaPageData = unstable_cache(
       // Se hace la petición a la URL de Google Script.
       const response = await fetch(fullURL);
       const data = await response.json();
-      return data as AcademiaPageData;
+      return data as AcademiaPageDataResponse;
     } catch (error) {
       // Si hay un error, se lee el archivo con el fallback.
       console.error("error", error);
+      throw new Error("Error fetching academia page data");
       return readFallbackData();
     }
   },

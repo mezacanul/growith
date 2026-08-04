@@ -45,7 +45,11 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
 
 .text-white { color: var(--text-off-white); }
 .bg-white { background-color: var(--text-off-white); }
@@ -101,6 +105,14 @@ section { padding: var(--seccion) 0; }
 
 .eyebrow-light::before {
   background: rgba(242, 241, 239, 0.5);
+}
+
+.eyebrow-white {
+  color: #ffffff;
+}
+
+.eyebrow-white::before {
+  background: linear-gradient(90deg, #ffffff, transparent);
 }
 
 h1, h2, h3, h4 {

@@ -11,13 +11,14 @@ export const metadata: Metadata = {
 };
 
 export default async function VideosPage() {
-  const data = await getAcademiaPageData();
+  const data = await getAcademiaPageData("soferp");
+  console.log("data from videos page", data);
 
   return (
     <AcademiaEffects>
       <main>
         <HeroVideos assets={data.assets} />
-        <Videos />
+        <Videos youtube={data.youtube} />
       </main>
     </AcademiaEffects>
   );

@@ -1,5 +1,6 @@
 function getClientObjects(sheetID) {
   const keys = [
+    "folderID",
     "clientSTR", 
     "period",
     "year",

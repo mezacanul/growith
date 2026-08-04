@@ -6,16 +6,21 @@ import type { AcademiaPageAssets } from "@/types/academia-page-data";
 
 const paginas = [
   { title: "Inicio", route: "/" },
-  { title: "Material de Trabajo", route: "/material-de-trabajo" },
-  { title: "Videos", route: "/videos" },
-] as const;
+  { title: "Material de Trabajo", route: "material-de-trabajo" },
+  { title: "Videos", route: "videos" },
+];
 
 interface HeaderProps {
   assets: AcademiaPageAssets;
+  clientID: string;
 }
 
-export function Header({ assets }: HeaderProps) {
+export function Header({ assets, clientID }: HeaderProps) {
   const pathname = usePathname();
+  const mappedPages = paginas.map((pagina) => ({
+    ...pagina,
+    route: pagina.route == "/" ? `/academia/${clientID}` : `/academia/${clientID}/${pagina.route}`,
+  }));
 
   return (
     <header className="nav" id="nav">
@@ -30,7 +35,7 @@ export function Header({ assets }: HeaderProps) {
           id="navLinks"
           aria-label="Navegación principal"
         >
-          {paginas.map((pagina) => (
+          {mappedPages.map((pagina) => (
             <Link
               key={pagina.title}
               href={pagina.route}

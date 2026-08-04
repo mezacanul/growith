@@ -45,6 +45,9 @@ function getClientFolder(clientSTR){
 
 function getClientLogo(clientFolder){
   const logo = GrowithSDK.getFileByName(clientFolder.id, "logo", true)
+  if(!logo){
+    return null
+  }
   // Logger.log(GrowithSDK.makeFilePublic(logo))
   GrowithSDK.makeFilePublic(logo)
 

@@ -3,6 +3,7 @@ import { HeroMT } from "@/components/material-de-trabajo/hero";
 import { MaterialDeTrabajo } from "@/components/material-de-trabajo/material-de-trabajo";
 import { AcademiaEffects } from "@/components/shared/academia-effects";
 import { getAcademiaPageData } from "@/lib/academia-page-data";
+import { AcademiaPageData } from "@/types/academia-page-data";
 
 export const metadata: Metadata = {
   title: "Material de Trabajo | Growith Academia",
@@ -10,8 +11,13 @@ export const metadata: Metadata = {
     "Recursos de trabajo de la Academia Growith Business Academy para el periodo actual.",
 };
 
-export default async function MaterialDeTrabajoPage() {
-  const data = await getAcademiaPageData();
+export default async function MaterialDeTrabajoPage({
+  params,
+}: {
+  params: Promise<{ clientID: string }>;
+}) {
+  const { clientID } = await params;
+  const data = (await getAcademiaPageData(clientID)) as AcademiaPageData;
 
   return (
     <AcademiaEffects>

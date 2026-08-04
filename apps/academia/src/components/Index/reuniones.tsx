@@ -23,7 +23,7 @@ export function Reuniones({ meet }: ReunionesProps) {
         )}
       >
         <div className="relative z-[1] px-6 py-[clamp(3rem,6vw,4.5rem)] text-center">
-          <span className="eyebrow eyebrow-light">Sesiones en vivo</span>
+          <span className="eyebrow eyebrow-white">Sesiones en vivo</span>
           <p className="mx-auto w-[80%] text-sm lg:text-xl">
             Mantente al tanto de las sesiones con tu Trainer
           </p>

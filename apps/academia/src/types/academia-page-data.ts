@@ -47,4 +47,14 @@ export interface AcademiaPageData {
   drive: AcademiaDrive;
   meet: AcademiaMeet;
   youtube: YoutubeVideo[];
+  status?: undefined; // Prevents `'status' in AcademiaPageData` from being true
 }
+
+export interface AcademiaPageError {
+  status: "error";
+  message: string;
+}
+
+export type AcademiaPageDataResponse = 
+  | (AcademiaPageData & { status?: undefined })
+  | AcademiaPageError;

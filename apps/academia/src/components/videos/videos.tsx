@@ -1,15 +1,13 @@
 import { IFrame } from "@/components/shared/iframe";
+import { getYoutubeEmbedURL } from "@/lib/utils";
+import { YoutubeVideo } from "@/types/academia-page-data";
 
-const YOUTUBE_EMBED =
-  "https://www.youtube.com/embed/djV11Xbc914?list=RDdjV11Xbc914";
+export function Videos({ youtube }: { youtube: YoutubeVideo[] }) {
+  const videos = youtube.map((video) => ({
+    videoURL: getYoutubeEmbedURL(video.videoURL),
+    title: video.title,
+  }));
 
-const videos = Array.from({ length: 6 }, (_, i) => ({
-  id: i + 1,
-  src: YOUTUBE_EMBED,
-  title: `Video ${i + 1}`,
-}));
-
-export function Videos() {
   return (
     <section className="!py-[clamp(4rem,8vw,6.5rem)]">
       <div className="contenedor revelar">
@@ -24,8 +22,8 @@ export function Videos() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {videos.map((video) => (
-            <div key={video.id} className="aspect-video w-full">
-              <IFrame src={video.src} title={video.title} className="h-full" />
+            <div key={video.title} className="aspect-video w-full">
+              <IFrame src={video.videoURL as string} title={video.title} className="h-full" />
             </div>
           ))}
         </div>

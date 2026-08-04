@@ -119,7 +119,7 @@ function getClientData(pageConfig) {
     modality: clientConfig.modality,
     assets: {
       ...mappedGlobalAssets,
-      clientLogo: GrowithSDK.URLUtils(logo.id).getCDNURL(),
+      clientLogo: logo ? GrowithSDK.URLUtils(logo.id).getCDNURL() : null,
       calendario: GrowithSDK.URLUtils(calendar.id).getCDNURL(),
     },
     evento,
