@@ -1,25 +1,8 @@
 import { WebsiteCard } from "@/components/lista-websites-academia/website-card";
-import type {
-  AcademiaList,
-  AcademiaPeriodGroup,
-} from "@/types/academia-list";
+import type { AcademiaList, AcademiaPeriodGroup } from "@/types/academia-list";
 
 interface ListaWebsitesProps {
   websites: AcademiaList;
-}
-
-function groupByPeriod(websites: AcademiaList): AcademiaPeriodGroup[] {
-  return websites.reduce<AcademiaPeriodGroup[]>((groups, website) => {
-    const existing = groups.find((group) => group.period === website.period);
-
-    if (existing) {
-      existing.websites.push(website);
-      return groups;
-    }
-
-    groups.push({ period: website.period, websites: [website] });
-    return groups;
-  }, []);
 }
 
 export function ListaWebsites({ websites }: ListaWebsitesProps) {
@@ -34,8 +17,8 @@ export function ListaWebsites({ websites }: ListaWebsitesProps) {
             Lista de websites
           </h3>
           <p className="intro-seccion mt-4">
-            Revisa el estado de cada sitio: copia la URL cuando ya tiene carpeta,
-            o inicializa los que aún no están listos.
+            Revisa el estado de cada sitio: copia la URL cuando ya tiene
+            carpeta, o inicializa los que aún no están listos.
           </p>
         </div>
 
@@ -43,7 +26,9 @@ export function ListaWebsites({ websites }: ListaWebsitesProps) {
           {periodGroups.map((group) => (
             <div key={group.period}>
               <div className="mb-3 sm:mb-6">
-                <span className="eyebrow mb-2 hidden sm:inline-flex">Periodo</span>
+                <span className="eyebrow mb-2 hidden sm:inline-flex">
+                  Periodo
+                </span>
                 <h3 className="max-w-none text-lg font-bold tracking-tight text-dark-green sm:text-xl md:text-3xl">
                   {group.period}
                 </h3>
@@ -60,4 +45,18 @@ export function ListaWebsites({ websites }: ListaWebsitesProps) {
       </div>
     </section>
   );
+}
+
+function groupByPeriod(websites: AcademiaList): AcademiaPeriodGroup[] {
+  return websites.reduce<AcademiaPeriodGroup[]>((groups, website) => {
+    const existing = groups.find((group) => group.period === website.period);
+
+    if (existing) {
+      existing.websites.push(website);
+      return groups;
+    }
+
+    groups.push({ period: website.period, websites: [website] });
+    return groups;
+  }, []);
 }

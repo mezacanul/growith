@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeroVideos } from "@/components/videos/hero";
 import { Videos } from "@/components/videos/videos";
 import { AcademiaEffects } from "@/components/shared/academia-effects";
-import { getAcademiaPageData } from "@/lib/academia-page-data";
+import { getAcademiaPageData } from "@/lib/data/academia-page-data";
 import { AcademiaPageData } from "@/types/academia-page-data";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default async function VideosPage({
 }) {
   const { clientID } = await params;
   const data = (await getAcademiaPageData(clientID)) as AcademiaPageData;
-  console.log("data from videos page", data);
+  // console.log("data from videos page", data);
 
   return (
     <AcademiaEffects>

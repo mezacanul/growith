@@ -47,7 +47,7 @@ export function Evento({ data }: EventoProps) {
           </div>
 
           <div className="flex items-center lg:justify-end">
-            <Button asLink href={data.url}>
+            <Button className="!text-off-white" asLink href={data.url}>
               {data.textoBtn}
             </Button>
           </div>

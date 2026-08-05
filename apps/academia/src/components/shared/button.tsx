@@ -41,7 +41,7 @@ export function Button({
   type = "button",
   ...props
 }: ButtonProps) {
-  const classes = cn(variantMap[variant], className);
+  const classes = cn(variantMap[variant], className, "!text-base");
 
   if (asLink) {
     return (

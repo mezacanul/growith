@@ -1,22 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/shared/button";
 import { toTitleCase } from "@/lib/utils";
+import { getBaseUrl, handleCopyUrl } from "@/lib/helpers";
 import type { AcademiaWebsite } from "@/types/academia-list";
-
-function toHttpsUrl(str: string) {
-  return `https://${str}`;
-}
-
-function Spinner() {
-  return (
-    <span
-      className="inline-block size-4 animate-spin rounded-full border-2 border-off-white border-t-transparent"
-      aria-hidden
-    />
-  );
-}
+import { Spinner } from "@/components/ui/spinner";
+import { initWebsite } from "@/lib/actions/init-website";
 
 interface WebsiteCardProps {
   website: AcademiaWebsite;
@@ -26,44 +16,49 @@ export function WebsiteCard({ website: initialWebsite }: WebsiteCardProps) {
   const [website, setWebsite] = useState(initialWebsite);
   const [copied, setCopied] = useState(false);
   const [initializing, setInitializing] = useState(false);
+  const [baseUrl, setBaseUrl] = useState<string | null>(null);
 
   const title = toTitleCase(website.clientSTR);
   const hasFolder = website.folderID != null;
-  const href = website.websiteURL ? toHttpsUrl(website.websiteURL) : null;
+  // const href = website.websiteURL ? toHttpsUrl(website.websiteURL) : null;
 
-  async function handleCopyUrl() {
-    if (!href) return;
-    try {
-      await navigator.clipboard.writeText(href);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
-    } catch {
-      setCopied(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBaseUrl(getBaseUrl(window));
     }
-  }
+  }, []);
 
   async function handleInicializar() {
     if (initializing) return;
 
     setInitializing(true);
-    await new Promise((resolve) => window.setTimeout(resolve, 2000));
-    setWebsite((current) => ({
-      ...current,
-      websiteURL: "test.com/test",
-      folderID: "abc123",
-    }));
+    const titleCased = toTitleCase(website.clientSTR);
+    console.log("titleCased", titleCased);
+
+    // return
+    const response = await initWebsite(titleCased);
+    console.log("response", response);
+    if (response.status === "success") {
+      setWebsite((current) => ({
+        ...current,
+        websiteURL: response.data.websiteURL,
+        folderID: response.data.newFolder.id,
+      }));
+    } else {
+      console.error("error", response.message);
+    }
     setInitializing(false);
   }
 
   return (
-    <article className="flex items-center gap-3 rounded-lg border border-dark-green/15 bg-off-white px-3 py-5 shadow-sm sm:h-full sm:flex-col sm:items-stretch sm:justify-between sm:gap-5 sm:p-6 sm:py-3 sm:shadow-lg lg:py-2.5">
+    <article className="flex items-center gap-3 rounded-lg border border-dark-green/15 bg-off-white px-3 shadow-sm sm:h-full sm:flex-col sm:items-stretch sm:justify-between sm:gap-5 sm:p-6 sm:shadow-lg py-3">
       <div className="min-w-0 flex-1">
-        <div className="hidden sm:inline-flex">
+        {/* <div className="hidden sm:inline-flex">
           <span className="eyebrow inline-flex">Sitio</span>
-        </div>
-        {href ? (
+        </div> */}
+        {website.websiteURL ? (
           <a
-            href={href}
+            href={website.websiteURL}
             target="_blank"
             rel="noopener noreferrer"
             className="block truncate text-base font-bold !text-blue-primary underline decoration-blue-primary/30 underline-offset-2 transition hover:!text-blue-primary-hover hover:decoration-blue-primary sm:text-xl sm:underline-offset-4"
@@ -77,7 +72,7 @@ export function WebsiteCard({ website: initialWebsite }: WebsiteCardProps) {
         )}
         {website.websiteURL && (
           <p className="mt-0.5 truncate text-xs text-night/60 sm:mt-2 sm:break-all sm:text-sm sm:whitespace-normal">
-            {website.websiteURL}
+            {`${baseUrl}${website.websiteURL}`}
           </p>
         )}
       </div>
@@ -87,7 +82,9 @@ export function WebsiteCard({ website: initialWebsite }: WebsiteCardProps) {
           <Button
             variant="brand"
             className="px-3 py-2 sm:w-auto sm:px-5 sm:py-3.5"
-            onClick={handleCopyUrl}
+            onClick={() =>
+              handleCopyUrl(website.websiteURL as string, setCopied, baseUrl)
+            }
           >
             {copied ? "Copiado" : "Copiar URL"}
           </Button>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { Header } from "@/components/layout/header";
-import { getAcademiaPageData } from "@/lib/academia-page-data";
+import { getAcademiaPageData } from "@/lib/data/academia-page-data";
 import "./globals.css";
 
 const montserrat = Montserrat({

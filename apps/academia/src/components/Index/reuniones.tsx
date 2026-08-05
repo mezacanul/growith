@@ -7,6 +7,7 @@ interface ReunionesProps {
 }
 
 export function Reuniones({ meet }: ReunionesProps) {
+  console.log("meet", meet);
   return (
     <section
       className={cn(
@@ -31,7 +32,7 @@ export function Reuniones({ meet }: ReunionesProps) {
             {`${toTitleCase(meet.dayOfCall)} a las ${meet.timeOfCall.toUpperCase()}`}
           </p>
           {meet.meetURL && (
-            <Button variant="brand-light" asLink href={meet.meetURL}>
+            <Button className="!text-dark-green" variant="brand-light" asLink href={meet.meetURL}>
               Reunión online
             </Button>
           )}

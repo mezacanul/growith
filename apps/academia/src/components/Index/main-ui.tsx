@@ -8,15 +8,17 @@ import type { AcademiaPageData } from "@/types/academia-page-data";
 
 interface MainUIProps {
   data: AcademiaPageData;
+  clientID: string;
 }
 
-export default function MainUI({ data }: MainUIProps) {
+export default function MainUI({ data, clientID }: MainUIProps) {
   return (
     <AcademiaEffects>
       <main>
         <Hero assets={data.assets} />
         <Evento data={data.evento} />
         <EspacioDeTrabajo
+          clientID={clientID}
           drive={data.drive}
           assets={data.assets}
           period={data.period}

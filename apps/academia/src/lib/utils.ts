@@ -7,6 +7,8 @@ export function cn(...inputs: ClassValue[]) {
 
 export function toTitleCase(str: string) {
   return str
+    .replaceAll("-", " ")
+    .replace(".", "")
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
@@ -15,11 +17,11 @@ export function toTitleCase(str: string) {
 export function getYoutubeEmbedURL(videoURL: string) {
   const embedPrefix = "https://www.youtube.com/embed/";
   const watchURL = new URL(videoURL);
-  
+
   const videoID = watchURL.searchParams.get("v");
   if (!videoID) {
     const shortURL = new URL(videoURL);
-    
+
     const videoID = shortURL.pathname.split("/").pop();
     if (!videoID) {
       return null;

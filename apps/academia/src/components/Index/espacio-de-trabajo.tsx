@@ -3,12 +3,14 @@ import type {
   AcademiaPageAssets,
 } from "@/types/academia-page-data";
 import { IFrame } from "../shared/iframe";
+import { toTitleCase } from "@/lib/utils";
 
 interface EspacioDeTrabajoProps {
   drive: AcademiaDrive;
   assets: AcademiaPageAssets;
   period: string;
   modality: string;
+  clientID: string;
 }
 
 export function EspacioDeTrabajo({
@@ -16,6 +18,7 @@ export function EspacioDeTrabajo({
   assets,
   period,
   modality,
+  clientID,
 }: EspacioDeTrabajoProps) {
   return (
     <section className="bg-off-white !pt-[4rem]">
@@ -37,8 +40,8 @@ export function EspacioDeTrabajo({
             />
           )}
           {!assets.clientLogo && (
-            <h2 className="text-center font-bold !text-dark-green text-xl lg:text-3xl">
-              {"Soferp"}
+            <h2 className="text-center font-bold !text-forest-green text-xl lg:text-3xl">
+              {toTitleCase(clientID)}
             </h2>
           )}
         </div>

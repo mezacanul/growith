@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeroMT } from "@/components/material-de-trabajo/hero";
 import { MaterialDeTrabajo } from "@/components/material-de-trabajo/material-de-trabajo";
 import { AcademiaEffects } from "@/components/shared/academia-effects";
-import { getAcademiaPageData } from "@/lib/academia-page-data";
+import { getAcademiaPageData } from "@/lib/data/academia-page-data";
 import { AcademiaPageData } from "@/types/academia-page-data";
 
 export const metadata: Metadata = {
