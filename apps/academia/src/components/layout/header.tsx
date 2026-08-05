@@ -25,7 +25,7 @@ export function Header({ assets, clientID }: HeaderProps) {
   return (
     <header className="nav" id="nav">
       <div className="nav-inner">
-        <Link href="/" className="nav-logo" aria-label="Growith Academia">
+        <Link href={`/academia/${clientID}`} className="nav-logo" aria-label="Growith Academia">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={assets.logoGrowith} alt="Growith Logo" />
         </Link>
