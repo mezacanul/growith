@@ -43,4 +43,5 @@ export const getAcademiaPageData = unstable_cache(
     }
   },
   ["academia-google-script-data"],
+  { tags: ["academia-google-script-data"] },
 );

@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { getAcademiaPageData } from "@/lib/data/academia-page-data";
 import { notFound } from "next/navigation";
+import GoogleCacheRevalidator from "@/components/shared/google-cache-revalidator";
 
 export default async function AcademiaLayout({
   children,
@@ -17,6 +18,7 @@ export default async function AcademiaLayout({
 
   return (
     <body className="min-h-full flex flex-col font-sans">
+      <GoogleCacheRevalidator tag="academia-google-script-data" />
       <Header assets={response.assets} clientID={clientID} />
       {children}
     </body>

@@ -44,6 +44,7 @@ body {
 
 .Toastify {
   position: fixed !important;
+  z-index: 110 !important;
 }
 
 img { max-width: 100%; display: block; }
