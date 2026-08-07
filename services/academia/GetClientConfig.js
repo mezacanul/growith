@@ -19,6 +19,7 @@ function getClientConfig(clientSTR) {
     sheet.getLastRow() - 1,
     sheet.getLastColumn()
   ).getValues();
+  // Logger.log("rows")
   // Logger.log(data)
   const row = data.find(r => r[1] === clientSTR);
 
@@ -26,7 +27,7 @@ function getClientConfig(clientSTR) {
     return null
   } else {
     // Select the row with only the data needed
-    const sliced = row.slice(0, 7)
+    const sliced = row.slice(0, 8)
     
     // Map the keys to values and make an object
     const object = Object.fromEntries(

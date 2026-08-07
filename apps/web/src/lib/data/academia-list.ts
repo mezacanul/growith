@@ -23,4 +23,4 @@ export const getAcademiaList =
       throw new Error("Error fetching academia list");
       return readFallbackList();
     }
-  }, ["academia-list"]);
+  }, ["academia-list"], { tags: ["academia-list"] });
