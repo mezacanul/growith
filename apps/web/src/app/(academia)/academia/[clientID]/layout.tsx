@@ -18,7 +18,10 @@ export default async function AcademiaLayout({
 
   return (
     <body className="min-h-full flex flex-col font-sans">
-      <GoogleCacheRevalidator tag="academia-google-script-data" />
+      <GoogleCacheRevalidator
+        tag="academia-google-script-data"
+        fetchFnArgs={{ clientID }}
+      />
       <Header assets={response.assets} clientID={clientID} />
       {children}
     </body>
