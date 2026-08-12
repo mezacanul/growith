@@ -57,5 +57,5 @@ export default function GoogleCacheRevalidator({
     console.log("visited routes", visited.current);
   }, [pathname, tag, fetchFnArgs]);
 
-  return <ToastContainer />;
+  return null;
 }

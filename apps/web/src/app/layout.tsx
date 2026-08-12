@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { getAcademiaPageData } from "@/lib/data/academia-page-data";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         {/* <Header assets={data.assets} /> */}
         {children}
+        <ToastContainer position="bottom-center" />
       </body>
     </html>
   );

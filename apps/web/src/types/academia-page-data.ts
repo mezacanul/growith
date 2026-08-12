@@ -39,6 +39,10 @@ export interface YoutubeVideo {
   videoURL: string;
 }
 
+export interface YoutubeVideos {
+  [key: string]: YoutubeVideo[];
+}
+
 export interface AcademiaPageData {
   period: string;
   modality: string;
@@ -46,7 +50,7 @@ export interface AcademiaPageData {
   evento: AcademiaEvento;
   drive: AcademiaDrive;
   meet: AcademiaMeet;
-  youtube: YoutubeVideo[];
+  youtube: YoutubeVideos;
   status?: undefined; // Prevents `'status' in AcademiaPageData` from being true
 }
 

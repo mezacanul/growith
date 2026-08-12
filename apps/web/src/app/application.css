@@ -86,8 +86,9 @@ section { padding: var(--seccion) 0; }
 
 .eyebrow {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.7rem;
   margin-bottom: 1rem;
   font-size: 0.72rem;
   font-weight: 700;
@@ -102,6 +103,14 @@ section { padding: var(--seccion) 0; }
   width: 2rem;
   height: 0.125rem;
   background: linear-gradient(90deg, var(--text-forest-green), transparent);
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.625rem;
+  }
 }
 
 .eyebrow-light {
